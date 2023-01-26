@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#006BB6" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="Students For Wishes QueensU"
+      content="Students for Wishes&#174; Queen's University is a volunteer branch in support of Make-A-Wish&#174; Canada"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -24,10 +25,30 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Students For Wishes | QueensU</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class = "header">
+
+      <div class = "header-inner">
+        <div class = "title">
+          <a href = "/"><img src="%PUBLIC_URL%/logo_border.png"></a>
+          <h1>Students For Wishes<span> <br>Queen's University</span></h1>
+        </div>
+
+        <ul class="nav">
+          <a href = "/"><li>Home</li></a>
+          <a href = "about"><li>About</li></a>
+          <a href = "donate"><li>Donations</li></a>
+          <a href = "volunteer"><li>Volunteer</li></a>
+          <a href = "contact"><li>Contact</li></a>
+          <a href = "events"><li>Events</li></a>
+        </ul>
+
+      </div>
+
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -39,5 +60,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
   </body>
 </html>

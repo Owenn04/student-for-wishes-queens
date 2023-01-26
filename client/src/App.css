@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "FuturaPT";
+  src: url("../public/fonts/FuturaPTBook.woff");
+}
+@font-face {
+  font-family: "FuturaPTBold";
+  src: url("../public/fonts/FuturaPTBold.woff");
+}
+@font-face {
+  font-family: "FuturaPTLight";
+  src: url("../public/fonts/FuturaPTLight.woff");
+}
+@font-face {
+  font-family: "CenturySchoolbook";
+  src: url("../public/fonts/CenturySchoolbook.woff");
+}
+
 .App {
   text-align: center;
 }
