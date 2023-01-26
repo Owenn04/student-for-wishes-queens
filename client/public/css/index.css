@@ -40,10 +40,13 @@ GRAY: #747678
     display: flex;
     background: rgb(0,107,182);
     background: linear-gradient(120deg, rgba(18,145,235,1) 0%, rgba(0,107,182,1) 100%); 
+    position: relative;
+    z-index: 2;
 }
 
 .header-inner {
-    width: 1000px;
+    width: 60%;
+    min-width: 1100px;
     height: 100%;
     display: block;
     margin: 0 auto;
@@ -65,7 +68,7 @@ GRAY: #747678
 }
 .title h1{
     font-family: "FuturaPT";
-    color: white;
+    color: #f9fdff;
     display: table-cell;
     vertical-align: middle;
     text-align: middle;
@@ -94,14 +97,65 @@ GRAY: #747678
     display: table-cell;
     vertical-align: middle;
     height: 100%;
-    color: rgb(255, 255, 255);
+    color: #f9fdff;
     font-family: "FuturaPTLight";
-    font-size: 20px;
+    font-size: 26px;
     user-select: none;
     transition: 300ms ease;
 }
 .nav a li:hover {
     color: #7dddee;
-    font-size: 25px;
+    font-size: 35px;
+    transition: 300ms ease;
+}
+
+.footer {
+    width: 100%;
+    position: fixed;        
+    background: linear-gradient(127deg, rgba(22,23,23,1) 0%, rgba(37,38,38,1) 100%);
+    padding: 10px 0;
+
+    bottom: 0;
+
+    user-select: none;
+}
+.footer img{
+    width: 25px;
+    margin: 0 auto;
+}
+
+.footer-container {
+    display: flex;
+    width: 99%;
+    margin: 0 auto;
+}
+.footer-container h1 {
+    display: table;
+    float: left;
+    vertical-align: middle;
+    padding: 3px;
+    color: white;
+    transform: translateX(6px);
+
+    min-width: 200px;
+
+    font-family: "FuturaPTLight";
+    font-size: 15px;
+    font-weight: 1;
+    
+}
+.footer-container h2 {
+    color: #f9fdff;
+    font-family: "FuturaPTLight";
+    font-size: 20px;
+    font-weight: 1;
+
+    position: fixed;
+    right: 10px;
+    transition: 300ms ease;
+}
+.footer-container h2:hover {
+    font-size: 22px;
+    color: #7dddee;
     transition: 300ms ease;
 }
