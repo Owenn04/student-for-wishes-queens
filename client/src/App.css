@@ -14,7 +14,10 @@
   font-family: "CenturySchoolbook";
   src: url("../public/fonts/CenturySchoolbook.woff");
 }
-
+* {
+  font-family: FuturaPT;
+  user-select: none;
+}
 .App {
   text-align: center;
 }
