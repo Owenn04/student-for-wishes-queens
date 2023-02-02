@@ -13,6 +13,7 @@ import Volunteer from './pages/volunteer.js'
 import Donate from './pages/donation.js'
 import Contact from './pages/contact'
 import Events from './pages/events';
+import Mailing from './pages/mailing'
 import "./App.css"
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/donate' element={<Donate/>} />
           <Route path='/contact' element={<Contact/>} />
           <Route path='/events' element={<Events/>} />
+          <Route path='/mailing' element={<Mailing/>} />
         </Routes>
       </Router>
       
