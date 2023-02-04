@@ -40,6 +40,9 @@ GRAY: #747678
     display: flex;
     background: rgb(0,107,182);
     background: linear-gradient(120deg, rgba(18,145,235,1) 0%, rgba(0,107,182,1) 100%); 
+    /* background: url(placeholder1.jpg);
+    background-position-y: 400px; */
+    object-position: 100%;
     position: relative;
     z-index: 2;
 }
@@ -58,13 +61,12 @@ GRAY: #747678
     float: left;
 }
 .title img {
-    width: 85px;
-    height: 85px;
+    height: 130px;
     padding: 3px;
     margin: 0 auto;
 
     position: relative;
-    transform: translateX(-10%) translateY(43%);
+    transform: translateY(10%);
 
 }
 .title h1{
@@ -121,8 +123,9 @@ GRAY: #747678
     user-select: none;
 }
 .footer img{
-    width: 25px;
+    width: 70px;
     margin: 0 auto;
+    transform: translateY(-2px);
 }
 
 .footer-container {
