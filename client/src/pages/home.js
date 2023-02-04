@@ -4,7 +4,7 @@ const Home = () => (
     <div className='home'>
       <div className="home-banner">
         <a>
-          <h1>WELCOME</h1>
+          <h1><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></h1>
           <p>TO THE OFFICIAL STUDENTS FOR WISHES QUEEN'S UNIVERSITY WEBSITE</p>
         </a>
       </div>
