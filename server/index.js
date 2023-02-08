@@ -8,8 +8,8 @@ app.use(cors());
 app.use(express.json())
 
 // Route to get all posts
-app.get("/api/get", (req,res)=>{
-    db.query("SELECT * FROM posts", (err,result)=>{
+app.get("/api/events/get", (req,res)=>{
+    db.query("SELECT * FROM events", (err,result)=>{
         if(err) {
             console.log(err)
         }
@@ -17,10 +17,9 @@ app.get("/api/get", (req,res)=>{
     });   });
 
 // Route to get one post
-app.get("/api/getFromId/:id", (req,res)=>{
-
+app.get("/api/event/:id", (req,res)=>{
     const id = req.params.id;
-    db.query("SELECT * FROM posts WHERE id = ?", id,
+    db.query("SELECT * FROM events WHERE id = ?", id,
         (err,result)=>{
             if(err) {
                 console.log(err)

@@ -7,13 +7,11 @@ const db = mysql.createConnection({
 })
 db.connect(function(err) {
     if (err) throw err;
-    /*
-    db.query("SELECT * FROM tasks", function (err, result, fields) {
+
+    db.query("SELECT * FROM events", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
     });
-
-     */
 });
 
 module.exports = db;
