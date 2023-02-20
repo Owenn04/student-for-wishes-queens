@@ -66,11 +66,17 @@ const Events = () => {
       </div>
     )
   } else {
-    <div className = 'events'>
-      <h1>Events</h1>
-        <h3>Events Coming Soon</h3>
-    </div>
-  }
+    return (
+      <div className = 'events'>
+        <h1>Events</h1>
+          <div className="events-banner">
+            <a>
+              <h1>EVENTS</h1>
+            </a>
+          </div>
+          <h3>Events Coming Soon</h3>
+      </div>
+  )}
   
   };
 
