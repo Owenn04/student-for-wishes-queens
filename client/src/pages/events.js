@@ -6,22 +6,27 @@ const Events = () => {
 
   const [events, setEvents] = useState([
     {
-      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
-      title: "Squirtle Event",
-      date: "novermber 1",
-      location: "queens",
-      description: "yodie gang"
+      image: "https://images.unsplash.com/photo-1676806995068-fe6c530423dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      title: "Placeholder Event",
+      date: "March 13th 2023",
+      location: "Jefferey 128",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat."
     },
     {
-      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-      title: "Charmander Event",
-      date: "novermber 1",
-      location: "queens",
-      description: "BRURJRHRHRHHRHRH"
+      image: "https://images.unsplash.com/photo-1538688423619-a81d3f23454b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      title: "Placeholder Event",
+      date: "April 24th 2023",
+      location: "Stirling Auditorium",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      title: "Placeholder Event",
+      date: "April 17th, 2023",
+      location: "Victoria Hall",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat."
     }
   ])
-
-  // I just added some preset data for testing
 
   useEffect(() => {
     const handleEvents = async () =>{
@@ -31,29 +36,33 @@ const Events = () => {
     }
     handleEvents()
   }, [])
-  
-  // Feel Free to change this monstrocity of css. i tried
 
   if (events != null && events.length > 0){
     return(
       <div className='events'>
-        <h1>Events</h1>
+        <div className="events-banner">
+          <a>
+            <h1>EVENTS</h1>
+          </a>
+        </div>
           {events.map((props) => {
             return(
             <div className = 'event-item'>
               <img className = 'event-image' src = {props.image} alt = {props.title}/>
-              <span className = 'event-header'>
-                <h3 className = 'event-title'>{props.title}</h3>
-                <p className = 'event-date'>Date: {props.date} </p>
-              </span>
-              <span className = 'event-info'>
-                <p className = 'event-location'>Location: {props.location} </p>
+              <div className ="event-textitems">
+                <div className="event-toptext">
+                  <h1 className ="event-title">{props.title}</h1>
+                  <p className = 'event-date'>Date: {props.date} </p>
+                  <p className = 'event-location'>Location: {props.location} </p>
+                </div>
                 <p className = 'event-description'>{props.description}</p>
-                <button className = 'event-join-button'>Join!</button>
-              </span> 
+                <button className="event-join">JOIN!</button>
+              </div>
             </div>
             )
           })}
+
+          <div className="spacer"></div>
       </div>
     )
   } else {
