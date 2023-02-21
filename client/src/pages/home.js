@@ -1,4 +1,4 @@
-import css from "./css/home.css"
+import "./css/home.css"
 import React, { useState, useEffect } from "react"
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
       name: "Jordan Patel",
       role: "Vice-President",
       image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      blurb: "A highly analytical and strategic thinker with a track record of driving financial success."
+      blurb: "A dedicated and experienced executive with a strong commitment to making a positive impact on the world."
     },
     {
       name: "Lauren Nguyen",
@@ -32,7 +32,7 @@ const Home = () => {
       name: "James Carter",
       role: "Finance",
       image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-      blurb: "A dedicated and experienced executive with a strong commitment to making a positive impact on the world."
+      blurb: "A highly analytical and strategic thinker with a track record of driving financial success."
     },
   ])
 

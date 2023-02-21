@@ -129,9 +129,10 @@
     align-self: flex-end;
 
     margin-right: 10px;
+    /* margin-left: 680px; */
     margin-top: 80px;
     margin-bottom: 10px;
-    
+
     color: #f9fdff;
     font-family: FuturaPTBold;    
     font-size: 20px;
@@ -147,6 +148,6 @@
 
 .spacer {
     width: 100%;
-    height: 100px;
+    height: 200px;
     color: white;
 }
