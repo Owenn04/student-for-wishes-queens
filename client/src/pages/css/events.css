@@ -14,6 +14,10 @@
     font-family: "CenturySchoolbook";
     src: url("../fonts/CenturySchoolbook.woff");
 }
+.events {
+    background-color: #f9fdff;
+}
+
 .events-banner {
     width: 100%;
     min-width: 700px;
