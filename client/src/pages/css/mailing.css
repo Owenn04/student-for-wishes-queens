@@ -46,11 +46,11 @@
 .mailing-form form {
     border: none;
 }
-/*.email-form h1 {
+.mailing-form h1 {
     text-align: left;
     color: #00101b;
     font-size: 30px;
-}*/
+}
 
 .mailing-inputbox {
     padding: 10px;

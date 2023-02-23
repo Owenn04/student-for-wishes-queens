@@ -41,16 +41,18 @@ const Mailing = () => {
     <div className = 'mailing'>
       <div className='mailing-form-container'>
         <form className='mailing-form' onSubmit = {handleSubmit}>
+          <h1>Name:</h1>
           <input
           className="mailing-input-box"
-          placeholder = 'Name'
+          placeholder = 'Full Name'
           type = 'text'
           value = {name}
           onChange = {handleNameChange}
           />
+          <h1>Email:</h1>
           <input
           className="mailing-inputbox"
-          placeholder = 'email'
+          placeholder = 'Email'
           type = 'text'
           value = {email}
           onChange = {handleEmailChange}
