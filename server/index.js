@@ -3,12 +3,31 @@ const db = require('./config/db')
 const cors = require('cors')
 
 const app = express()
-const  PORT = 3002
+const PORT = 3002
 app.use(cors())
 app.use(express.json())
 
+
+// Query for sending name and email to mailing table
+
+app.post('/api/mailing/create', (req, res) => {
+    console.log("data create for mailing")
+    const name = req.body.name
+    const email = req.body.email;
+
+    db.query("INSERT INTO mailing (name, email) VALUES (?, ?)", [name, email], (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send('Internal server error');
+          return;
+        }
+        res.status(200).send('Data inserted successfully');
+      })
+    })
+
 // Route to get all posts
 app.get("/api/events/get", (req,res)=>{
+
     db.query("SELECT * FROM events", (err,result)=>{
         if(err) {
             console.log(err)
@@ -27,19 +46,29 @@ app.get("/api/event/:id", (req,res)=>{
             res.send(result)
         });   });
 
-// Route for creating the post
-app.post('/api/create', (req,res)=> {
+// Route for creating the an event
+app.post('/api/events/create', (req,res)=> {
+    console.log("event created")
+    //const id = req.body.Id
+    const title = req.params.Title
+    const date = req.params.Date
+    const description = req.params.Description
+    const image = req.params.Image
+    const location = req.params.Location
 
-    const username = req.body.userName;
-    const title = req.body.title;
-    const text = req.body.text;
+    console.log(title)
 
-    db.query("INSERT INTO posts (title, post_text, user_name) VALUES (?,?,?)",[title,text,username], (err,result)=>{
-        if(err) {
-            console.log(err)
-        }
-        console.log(result)
-    });   })
+    // right now its capitalzied just like the table but i will change all to lowercase later
+
+    db.query("INSERT INTO events (Title, Date, Description, Image, Location) VALUES (?,?,?,?,?)",[title, date, description, image, location], (err,result)=>{
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal server error');
+            return;
+          }
+          res.status(200).send('Data inserted successfully');
+        }) 
+    })
 
 // Route to like a post
 app.post('/api/like/:id',(req,res)=>{

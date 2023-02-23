@@ -15,25 +15,26 @@ const Mailing = () => {
     console.log("works") 
   }
 
-  const handleSubscribe = async (e) => {
-    await fetch("http://localhost:3001/mailing", { //no url yet
-      method: 'POST',
-      body: JSON.stringify({
-        name: name,
-        email: email
-      })
-        .then((res) => res.json())
-        .then(setName(""))
-        .then(setEmail(""))
-    })
-  }
-
   const handleSubmit = (e) => {
-    e.preventDefault()
-    handleSubscribe()
-  }
+    e.preventDefault();
 
-
+    fetch("http://localhost:3002/api/mailing/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setName("");
+          setEmail("");
+        } else {
+          throw new Error("Failed to create mailing");
+        }
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
   <div className='/mailing'>
