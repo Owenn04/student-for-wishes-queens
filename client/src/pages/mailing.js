@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import './css/mailing.css'
 
 
 const Mailing = () => {
@@ -37,23 +38,28 @@ const Mailing = () => {
   };
 
   return (
-  <div className='/mailing'>
-      <form onSubmit = {handleSubmit}>
-        <input
-        placeholder = 'Name'
-        type = 'text'
-        value = {name}
-        onChange = {handleNameChange}
-        />
-        <input
-        placeholder = 'email'
-        type = 'text'
-        value = {email}
-        onChange = {handleEmailChange}
-        />
-        <button type = 'submit'>Sign Up!</button>
-      </form>
-  </div>
+    <div className = 'mailing'>
+      <div className='mailing-form-container'>
+        <form className='mailing-form' onSubmit = {handleSubmit}>
+          <input
+          className="mailing-input-box"
+          placeholder = 'Name'
+          type = 'text'
+          value = {name}
+          onChange = {handleNameChange}
+          />
+          <input
+          className="mailing-inputbox"
+          placeholder = 'email'
+          type = 'text'
+          value = {email}
+          onChange = {handleEmailChange}
+          />
+          <button type = 'submit'>Sign Up!</button>
+        </form>
+      </div>
+    </div>
+  
   )
 }
 export default Mailing
