@@ -24,6 +24,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Home/>} />
+          <Route path='/home' element={<Home/>} />
           <Route path='/about' element={<About/>} />
           <Route path='/volunteer' element={<Volunteer/>} />
           <Route path='/donate' element={<Donate/>} />

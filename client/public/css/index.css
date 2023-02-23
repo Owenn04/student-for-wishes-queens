@@ -117,6 +117,7 @@ GRAY: #747678
 }
 .footer-mailing a {
     color: #f9fdff;
+    font-size: 17px;
 }
 .footer-mailing a:hover {
     color: #4ec4ff;
