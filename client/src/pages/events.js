@@ -22,11 +22,13 @@ const Events = () => {
       link: "http://www.zuofx.xyz"
     },
     {
-      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://images.unsplash.com/photo-1677058569057-675cb6f0e4d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      // image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       title: "Placeholder Event",
       date: "April 17th, 2023",
       location: "Victoria Hall",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat.",
+      description:"Short blurb for placeholder",
+      // description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat.",
       link: "http://www.zuofx.xyz"
     }
   ])
@@ -58,8 +60,10 @@ const Events = () => {
                   <p className = 'event-date'>Date: {props.date} </p>
                   <p className = 'event-location'>Location: {props.location} </p>
                 </div>
+                <div className="event-spacer"></div>
                 <p className = 'event-description'>{props.description}</p>
-                <a href={props.link} target="_blank">
+
+                <a className="event-join-a" href={props.link} target="_blank">
                   <button className="event-join">JOIN!</button>
                 </a>
               </div>
