@@ -19,22 +19,31 @@ const Mailing = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3002/api/mailing/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setName("");
-          setEmail("");
-        } else {
-          throw new Error("Failed to create mailing");
-        }
-      })
-      .catch((error) => console.error(error));
+    if (/^[a-zA-Z ]+$/.test(name)) {
+      if (email.includes("@")) {
+        fetch("http://localhost:3002/api/mailing/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              setName("");
+              setEmail("");
+            } else {
+              throw new Error("Failed to create mailing");
+            }
+          })
+          .catch((error) => console.error(error));
+      }else{
+        alert("Please enter a proper email address. ")
+      }
+    }else{
+      alert("Please Enter a proper name.")
+    }
+      
   };
 
   return (
