@@ -25,7 +25,8 @@ app.post('/api/mailing/create', (req, res) => {
       })
     })
 
-// Route to get all posts
+
+// Query to get all events from events table
 app.get("/api/events/get", (req,res)=>{
 
     db.query("SELECT * FROM events", (err,result)=>{
@@ -33,7 +34,53 @@ app.get("/api/events/get", (req,res)=>{
             console.log(err)
         }
         res.send(result)
-    });   });
+    });   
+});
+
+// Query to create an event an add it to the mailing table
+app.post('/api/events/create', (req,res)=> {
+    console.log("event created")
+    //const id = req.body.Id
+    const title = req.body.Title
+    const date = req.body.Date
+    const description = req.body.Description
+    const image = req.body.Image
+    const location = req.body.Location
+
+
+    // right now its capitalzied just like the table but i will change all to lowercase later
+
+    db.query("INSERT INTO events (Title, Date, Description, Image, Location) VALUES (?,?,?,?,?)",[title, date, description, image, location], (err,result)=>{
+        if (err) {
+            console.error(err)
+            res.status(500).send('Internal server error')
+            return
+          }
+          res.status(200).send('Data inserted successfully')
+        }) 
+    })
+
+app.post('/api/users/get', (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+      
+    db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
+          if (err) {
+            console.error(err)
+            res.status(500).send('Internal server error');
+            return
+          } else {
+            if (results.length > 0) {
+              res.status(200).send('Login successful');
+            } else {
+              res.status(401).send('Invalid username or password');
+            }
+          }
+        });
+      });
+
+
+
 
 // Route to get one post
 app.get("/api/event/:id", (req,res)=>{
@@ -46,29 +93,7 @@ app.get("/api/event/:id", (req,res)=>{
             res.send(result)
         });   });
 
-// Route for creating the an event
-app.post('/api/events/create', (req,res)=> {
-    console.log("event created")
-    //const id = req.body.Id
-    const title = req.params.Title
-    const date = req.params.Date
-    const description = req.params.Description
-    const image = req.params.Image
-    const location = req.params.Location
 
-    console.log(title)
-
-    // right now its capitalzied just like the table but i will change all to lowercase later
-
-    db.query("INSERT INTO events (Title, Date, Description, Image, Location) VALUES (?,?,?,?,?)",[title, date, description, image, location], (err,result)=>{
-        if (err) {
-            console.error(err);
-            res.status(500).send('Internal server error');
-            return;
-          }
-          res.status(200).send('Data inserted successfully');
-        }) 
-    })
 
 // Route to like a post
 app.post('/api/like/:id',(req,res)=>{
