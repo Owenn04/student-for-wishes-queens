@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
   const location = useLocation()
   console.log(authData)
 
-  if (!authData){
+  if (!authData.isAuthenticated){
     return(
       <Navigate to = '/login' replace state = {{from: location}} />
     )
@@ -18,6 +18,3 @@ function PrivateRoute({ children }) {
   
 export default PrivateRoute
 
-/*
-The code that returns back to login and logs the currect location as a state does not work but all is needed is return children :)
-*/
