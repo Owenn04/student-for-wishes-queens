@@ -6,7 +6,7 @@ export const AuthProvider = ({children}) => {
   const [authData, setAuthData] = useState(() => {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"
     //this code check if the value for "isLoggedIn" === "true"
-    //i have to use quotes around true for some reason.
+    //i have to use quotes around true because sessionStorage only stores strings
     return {
       email: null,
       password: null,
@@ -41,11 +41,13 @@ export const useAuth = () => {
 
 /* How does this boy work :)
   1. AuthProvider Component is created which carries the state of an object called authData containing 3 properties: email, pwrod, 
-  and isAuth.. 
+  and isAuth.. isAuth carries the state of another variable called isLoggedIn which is true if there is a key value pair that looks like "isLoggedIn": "true"
   This component also carries 2 functions: login and logout which can be called in other function. These function alter the state data
+
   2. The AuthContext.Provider is a custom react component that is created when you use the useContext hook through createContext. 
   The values passes through this component are then able to be used globally in any components its wrapped around as well as the children
-  components, which in this case is the AuthProvider function which is exported
+  components, which in this case is the AuthProvider function which is exported. Instead of using AuthConext.Container you can use the useContext hook to create the useAuth hook
+
   3. Then a useAuth hook is created and also exported which allows all other functions to use the the AuthContext function and its values 
   by created a useAuth object such as const auth = useAuth()
 */
