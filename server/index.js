@@ -2,6 +2,10 @@ const express = require('express')
 const db = require('./config/db')
 const cors = require('cors')
 
+const bcrypt = require('bcrypt');
+const saltRounds = 7;
+//For hashing ive choosen to use 7 salt rounds. we can maybe store this in an .env
+
 const app = express()
 const PORT = 3002
 app.use(cors())
@@ -64,20 +68,29 @@ app.post('/api/users/get', (req, res) => {
     const email = req.body.email
     const password = req.body.password
       
-    db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
-          if (err) {
+    db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+        if (err) {
             console.error(err)
-            res.status(500).send('Internal server error');
+            res.status(500).send('Internal server error')
             return
-          } else {
-            if (results.length > 0) {
+        }
+      
+        if (results.length > 0) {
+            const user = results[0];
+            const isPasswordMatch = await bcrypt.compare(password, user.password);
+            console.log("Stored password hash: ", user.password);
+            console.log("Inputted password hash: ", await bcrypt.hash(password, saltRounds));
+            console.log("Is password match: ", isPasswordMatch);
+            if (isPasswordMatch) {
               res.status(200).send('Login successful');
             } else {
               res.status(401).send('Invalid username or password');
             }
-          }
-        });
-      });
+        } else {
+            res.status(401).send('Invalid username or password');
+        }
+    })
+})
 
 
 

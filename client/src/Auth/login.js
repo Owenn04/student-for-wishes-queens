@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useAuth } from './AuthContext'
 import { useNavigate } from 'react-router-dom'
 
+
+
+
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +19,7 @@ const Login = () => {
       const response = await fetch('http://localhost:3002/api/users/get', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password}),
       });
       if (response.status === 200) {
         auth.login(email, password)
@@ -24,7 +27,7 @@ const Login = () => {
 
       } else {
         alert('Improper Email or Password')
-        // this statement was working but then a changed something and its not anymore. login still works
+        
       }
     } catch (err) {
       console.error(err)
