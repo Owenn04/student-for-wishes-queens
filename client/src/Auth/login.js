@@ -22,7 +22,7 @@ const Login = () => {
         body: JSON.stringify({ email, password}),
       });
       if (response.status === 200) {
-        auth.login(email, password)
+        auth.login(email, password, true)
         navigate('/admin')
 
       } else {

@@ -78,9 +78,11 @@ app.post('/api/users/get', (req, res) => {
         if (results.length > 0) {
             const user = results[0];
             const isPasswordMatch = await bcrypt.compare(password, user.password);
-            console.log("Stored password hash: ", user.password);
+            
+            /*console.log("Stored password hash: ", user.password);
             console.log("Inputted password hash: ", await bcrypt.hash(password, saltRounds));
-            console.log("Is password match: ", isPasswordMatch);
+            console.log("Is password match: ", isPasswordMatch);*/
+            
             if (isPasswordMatch) {
               res.status(200).send('Login successful');
             } else {

@@ -3,18 +3,29 @@ import { createContext, useState, useContext } from 'react';
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({children}) => {
-  const [authData, setAuthData] = useState({
-    email: null,
-    password: null,
-    isAuthenticated: false
-  })
+  const [authData, setAuthData] = useState(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"
+    //this code check if the value for "isLoggedIn" === "true"
+    //i have to use quotes around true for some reason.
+    return {
+      email: null,
+      password: null,
+      isAuthenticated: isLoggedIn
+    }
+  });
+    
+
 
   const login = (email, password) => {
     setAuthData({email, password, isAuthenticated: true})
+    localStorage.setItem("isLogginIn", "true")
+    //when the login function is used creates an item in the local storage
+    //that looks like this "isLoggedIn": "true"
   }
 
   const logout = () => {
     setAuthData({email: null, password: null, isAuthenticated: false})
+    localStorage.removeItem("isLoggedIn")
   }
 
   return(
