@@ -1,0 +1,108 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+
+
+    right: 60px;
+    top: 60px;
+
+    background-color: rgba(0,107,182,1);
+    border-radius: 3px;
+    outline-style: solid;
+    outline-width: 8px;
+    outline-color: rgba(0,107,182,1);
+
+    filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.4));
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #f9fdff;
+    transition: 200ms ease;
+    border-radius: 3px;
+  }
+  
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: #f9fdff;
+    transition: 200ms ease;
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #f9fdff;
+  }
+  
+  /*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  /* General sidebar styles */
+  .bm-menu {
+    background: rgba(0,107,182,1);
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+  
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+  }
+  
+ /* Individual item */
+.bm-item {
+    display: inline-block;
+  
+    color: #f9fdff;
+    margin-bottom: 20px;
+    text-align: left;
+    text-decoration: none;
+    transition: 200ms ease;
+
+    font-size: 25px;
+    font-family: FuturaPTLight;
+  }
+  
+  .bm-item:hover {
+    color: #87d7ff;
+    transition: 200ms ease;
+  }
+  
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+.mailing-list {
+    
+}
+.mailing-list a {
+    color: #f9fdff;
+    font-family: FuturaPT;
+    transition: 200ms ease;
+
+}
+.mailing-list a:hover {
+    color: #87d7ff;
+    font-family: FuturaPT;
+    transition: 200ms ease;
+}

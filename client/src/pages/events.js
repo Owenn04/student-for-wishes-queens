@@ -63,7 +63,7 @@ const Events = () => {
                   <p className = 'event-location'>Location: {props.Location} </p>
                 </div>
                 <div className="event-spacer"></div>
-                <p className = 'event-description'>{props.description}</p>
+                <p className = 'event-description'>{props.Description}</p>
 
                 <a className="event-join-a" href={props.link} target="_blank">
                   <button className="event-join">JOIN!</button>

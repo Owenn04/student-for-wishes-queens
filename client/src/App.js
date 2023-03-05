@@ -19,12 +19,25 @@ import Admin from './pages/admin';
 import PrivateRoute from './Auth/PrivateRoute'
 import { AuthProvider} from './Auth/AuthContext';
 
+import Sidebar from './Sidebar';
+import { slide as Menu } from 'react-burger-menu';
 
 
 
 function App() {
   return (
     <div className="App">
+      <div id="outer-container">
+          <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+          <div id="page-wrap">
+
+          </div>
+      </div>
+
+      <div className='header'>
+        <a href = "/home"><img src="./sfwq-white.png"/></a>
+      </div>
+
       <AuthProvider>
         <Router>
           <Routes>
