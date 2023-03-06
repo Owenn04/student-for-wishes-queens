@@ -48,11 +48,23 @@ const Mailing = () => {
 
   return (
     <div className = 'mailing'>
+
+      <div className="mailing-banner">
+        <a>
+          <h1>MAILING LIST</h1>
+        </a>
+      </div>
+
+      <div className="mailing-textbox">
+          <h1>JOIN OUR MAILING LIST TO GET REGULAR UPDATES!</h1>
+  
+      </div>
+
       <div className='mailing-form-container'>
         <form className='mailing-form' onSubmit = {handleSubmit}>
           <h1>Name:</h1>
           <input
-          className="mailing-input-box"
+          className="mailing-inputbox"
           placeholder = 'Full Name'
           type = 'text'
           value = {name}
@@ -69,6 +81,8 @@ const Mailing = () => {
           <button type = 'submit'>Sign Up!</button>
         </form>
       </div>
+
+      <div className="spacer"></div>
     </div>
   
   )
