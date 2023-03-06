@@ -104,16 +104,19 @@ GRAY: #747678
     padding-top: 2px;
     padding-left: 10px;
     margin: 0 0 auto;
+
+    flex-grow: 1;
 }
 .footer-mailing {
     margin: 0 0 auto;
-    padding-left: 45%;
     text-decoration: none;
     color: #f9fdff;
+    
 }
 .footer-mailing a {
     color: #f9fdff;
-    font-size: 17px;
+    font-size: 100%;
+
 }
 .footer-mailing a:hover {
     color: #4ec4ff;

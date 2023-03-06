@@ -49,7 +49,6 @@
     align-content: flex-start;
 
     width: 80%;
-    min-width: 800px;
     height: 100%;
     
     background-color: #74CDFF;
@@ -57,7 +56,6 @@
   }
   
 .event-image {
-    min-width: 300px;
     max-width: 400px;
     width: 100%;
 
@@ -98,6 +96,7 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .event-title {
     text-align: left;
