@@ -27,11 +27,8 @@
   }
 }
 .header {
-  display: flex;
-  flex-direction: row;
-
-  justify-content: start;
-
+  /* display: flex; */
+  /* flex-direction: row; */
 
   width: 100%;
   height: 175px;
@@ -41,6 +38,6 @@
 }
 
 .header a img {
-  height: 90%;
+  height: 150px;
   padding-top: 8px;
 }
