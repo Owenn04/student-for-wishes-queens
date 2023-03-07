@@ -41,7 +41,9 @@ const Home = () => {
       <div className='home'>
         <div className="home-banner">
           <a>
-            <h1><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></h1>
+            <div className="home-h1">
+              <h1><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></h1>
+            </div>
             <p>TO THE OFFICIAL STUDENTS FOR WISHES QUEEN'S UNIVERSITY WEBSITE</p>
           </a>
         </div>
@@ -57,20 +59,13 @@ const Home = () => {
 
         <div className="card-holder">
         {people.map((props) => {
+          // props.image name role blurb
           return (
             <div className="card-main">
-              <div className="card-box">
-                <div className="card-imgbox">
-                  <img className="card-img" src = {props.image}/>
-                </div>
-
-                <div className="card-name">
-                  {props.name}, <span>{props.role}</span>
-                </div>
-                <div className="card-blurb">
-                  {props.blurb}
-                </div>
-
+              <img src={props.image} ></img>
+              <div className="card-txts">
+                <h1>{props.name} | <span>{props.role}</span></h1>
+                <p>{props.blurb}</p>
               </div>
             </div>
           )

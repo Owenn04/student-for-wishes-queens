@@ -4,7 +4,9 @@
 
 .about-banner {
     width: 100%;
-    height: 300px;
+    
+    min-height: 300px;
+
     background: url(../assets/placeholder1.jpg);
     background-position-x: 0px;
     background-position-y: -350px;
@@ -18,6 +20,7 @@
     margin-top: 75px;
     color: #f9fdff;
     font-size: 96px;
+
 }
 
 .people-ab {
@@ -30,52 +33,68 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    justify-content: center;
     
-    width: 70%;
+    width: 60vw;
+
+    padding: 0;
+
+    gap: 50px;
+
 }
 .card-main-ab {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     
-    padding: 20px;
-}
-.card-box-ab {
-    background-color: #D9D9D9;
-    border-radius: 75px;
+    padding: 0px;
+    /* padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0; */
 
-    width: 450px;
-    height: 150px;
-
+    margin-left: 0;
     margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 20px;
-    margin-top: 20px;
+
+    background-color: #D9D9D9;
+
+    border-radius: 100px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
 }
-.card-imgbox-ab {
-    margin-right: 60%;
-    margin-left: 0;
-    margin-top: -15px;
-}
-.card-img-ab {
-    width: 180px;
-    height: 180px;
-    
+
+.card-main-ab img {
+    aspect-ratio: 1/1;
+    min-width: 100px;
+    min-height: 100px;
+    width: 10vw;
+    height: 10vw;
+
     border-radius: 50%;
-    background-size: cover;
-    background-position: center;
     object-fit: cover;
+    
 }
-.card-name-ab {
-    margin-left: 190px;
-    margin-top: -160px;
-    color: #002037;
+.card-txts-ab {
+    width: 15vw;
+
+    min-width: 150px;
+    
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.card-txts-ab h1 {
+    text-align: left;
+    color: #171718;
     font-family: FuturaPTBold;
-    text-align: left;
 }
-.card-blurb-ab {
+.card-texts-ab h1 span {
+    color: #2f2f31;
+    font-family: FuturaPTLight;
+}
+.card-txts-ab p {
     text-align: left;
-    width: 200px;
-    margin-right: 60px;
 }
 
 .spacer {

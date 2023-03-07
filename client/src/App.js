@@ -27,7 +27,8 @@ import { slide as Menu } from 'react-burger-menu';
 function App() {
   return (
     <div className="App">
-      <div id="outer-container">
+      <div className="sidebar-container">
+      {/* <div id="outer-container"> */}
           <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
           <div id="page-wrap">
 

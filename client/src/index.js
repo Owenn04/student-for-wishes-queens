@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Sidebar from './Sidebar';
+import { slide as Menu } from 'react-burger-menu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
