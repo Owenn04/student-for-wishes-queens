@@ -64,7 +64,7 @@ app.post('/api/events/create', (req,res)=> {
         }) 
     })
 
-app.post('/api/users/get', (req, res) => {
+app.post('/api/users/post', (req, res) => {
     const email = req.body.email
     const password = req.body.password
       
@@ -94,7 +94,14 @@ app.post('/api/users/get', (req, res) => {
     })
 })
 
-
+app.get("/api/users/get", (req, res) =>{
+    db.query("SELECT id, name, email, role, created, updated, last_login FROM users", (err, result) => {
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    })
+})
 
 
 // Route to get one post
