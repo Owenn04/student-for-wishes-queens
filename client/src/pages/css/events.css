@@ -16,6 +16,7 @@
 }
 .events {
     background-color: #f9fdff;
+
 }
 
 .events-banner {
@@ -38,121 +39,103 @@
 .events {
     display: flex;
     flex-direction: column;
-    gap: 75px;
-    margin: 0 0 auto;
-}
-.event-item {
-    display: flex;
-    gap: 0;
-    flex-direction: row;
-    align-content: flex-start;
+    flex-wrap: wrap;
 
-    width: 80%;
-    height: 100%;
-    
+    gap: 75px;
+
+}
+
+
+.event-card-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: 70vw;
     background-color: #74CDFF;
     border-radius: 25px;
-  }
-  
-.event-image {
-    max-width: 400px;
-    width: 100%;
-
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    border-radius: 25px;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
 }
-  
-.event-info {
-    margin-left: 0;
-    margin-right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-}
- 
-.event-textitems {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: flex-start;
 
-    width: 100%;
-
-    margin-left: 10px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    gap: 10px;
-    padding-top: 8px;
+.event-card-holder:first-child {
+    flex-grow: 1;
 }
-.event-toptext {
+
+.event-card-main {
     display: flex;
     flex-direction: row;
-    gap: 10px;
     flex-wrap: wrap;
-}
-.event-title {
-    text-align: left;
-    color: #0D3068;
-    font-size: 30px;
-    font-family: FuturaPTBold;
-    
-}
-.event-date {
-    text-align: left;
-    padding-top: 5px;
-    font-size: 25px;
-    color: #124494;
-}
-  
-.event-location {
-    text-align: left;
-    padding-top: 5px;
-    font-size: 25px;
-    color: #3262b1;
-}
-  
-.event-description {
-    font-size: 20px;
-    text-align: left;
-    color: #333;
-    margin-bottom: 10px;
-    margin-right: 0;
-    margin-left: 0;
-    padding-right: 10px;
-    
-    /* This is to put the buttom at the bottom */
-    flex-grow: 1; 
-}
 
-.event-spacer {
-    background-color: red;
-    height: 0px;
-    /* min-width: 800px; */
+    width: 100%;
+    height: 100%;
+}
+.event-elements {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0;
     width: 100%;
 }
+.event-card-main img {
+    margin: 0;
+    aspect-ratio: 1/1;
 
-.event-join-a {
-    margin-right: 0;
-    margin-bottom: 10px;
-    padding-right: 10px;
+    width: 20vw;
+    min-width: auto;
+
+    object-fit: cover;
+    border-radius: 25px;
+}
+.event-txts {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: left;
+
+    width: 100%;
+    height: 100%;
 }
 
-.event-join {
+.event-txts h1{
+    margin-top: 10px;
+    font-family: FuturaPTBold;
+    color: #0D3068;
+    font-size: 22px;
+    
+}
+.events-txts-sub {
+    color: #0D3068;
+    margin: 0;
+}
+.events-txts-sub span {
+    font-family: FuturaPTBold;
+    text-align: left;
+}
+.event-txts p {
+    margin-top: 15px;
+    color: #000a1a;
+
+    flex-grow: 1;
+    margin-bottom: auto;
+
+}
+
+.event-button {
+    margin: 0;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.event-button a button{
     background-color: #0E2B58;
     border-radius: 25px;
     border: none;
 
-    width: 110px;
+    width: 120px;
     height: 45px;
 
-    margin-top: 100%;
 
     color: #f9fdff;
     font-family: FuturaPTBold;    
@@ -161,11 +144,10 @@
     transition: 200ms ease;
 
 }
-.event-join:hover {
+.event-button a button:hover {
     color: #74CDFF;
     transition: 200ms ease;
 }
-
 
 .spacer {
     width: 100%;

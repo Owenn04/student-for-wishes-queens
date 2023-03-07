@@ -50,23 +50,31 @@ const Events = () => {
             <h1>EVENTS</h1>
           </a>
         </div>
+        
           {events.map((props) => {
             return(
-            <div key = {props.Id} className = 'event-item'>
-              <img className = 'event-image' src = {props.Image} alt = {props.Title}/>
-              <div className ="event-textitems">
-                <div className="event-toptext">
-                  <h1 className ="event-title">{props.Title}</h1>
-                  <p className = 'event-date'>Date: {props.Date} </p>
-                  <p className = 'event-location'>Location: {props.Location} </p>
-                </div>
-                <div className="event-spacer"></div>
-                <p className = 'event-description'>{props.Description}</p>
+            <div key = {props.Id} className = 'event-card-holder'>
 
-                <a className="event-join-a" href={props.link} target="_blank">
-                  <button className="event-join">JOIN!</button>
-                </a>
+              <div className = "event-card-main">
+                <div className = "event-elements">
+                  <img src={props.Image}></img>
+                  <div className="event-txts">
+                    <h1>{props.Title}</h1>
+                    <div className = "events-txts-sub"><span>Location:</span> {props.Location} -
+                    <span> Date:</span> {props.Date}</div>
+                    <p>{props.Description}</p>
+
+                    <div className="event-button">
+                      <a href={props.link} target="_blank">
+                        <button>REGISTER</button>
+                      </a>
+                    </div>
+                    
+                  </div>
+                </div>
+
               </div>
+              
             </div>
             )
           })}
