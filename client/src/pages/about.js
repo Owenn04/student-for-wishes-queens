@@ -68,7 +68,7 @@ const About = () => {
   if  (people != null && people.length > 0) {
     return (
       <div className='about'>
-        <div className="contact-banner">
+        <div className="about-banner">
           <a>
             <h1>ABOUT US</h1>
           </a>
@@ -87,18 +87,10 @@ const About = () => {
         {people.map((props) => {
           return (
             <div className="card-main-ab">
-              <div className="card-box-ab">
-                <div className="card-imgbox-ab">
-                  <img className="card-img-ab" src = {props.image}/>
-                </div>
-
-                <div className="card-name-ab">
-                  {props.name}, <span>{props.role}</span>
-                </div>
-                <div className="card-blurb-ab">
-                  {props.blurb}
-                </div>
-
+              <img src={props.image} ></img>
+              <div className="card-txts-ab">
+                <h1>{props.name} | <span>{props.role}</span></h1>
+                <p>{props.blurb}</p>
               </div>
             </div>
           )
