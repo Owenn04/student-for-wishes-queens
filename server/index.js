@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const bcrypt = require('bcrypt');
 const saltRounds = 7;
-//For hashing ive choosen to use 7 salt rounds. we can maybe store this in an .env
+
 
 const app = express()
 const PORT = 3002
@@ -94,7 +94,9 @@ app.post('/api/users/post', (req, res) => {
     })
 })
 
-app.get("/api/users/get", (req, res) =>{
+
+
+app.get("/api/table/users/get", (req, res) =>{
     db.query("SELECT id, name, email, role, created, updated, last_login FROM users", (err, result) => {
         if(err) {
             console.log(err)
