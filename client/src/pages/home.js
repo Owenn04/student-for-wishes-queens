@@ -26,7 +26,7 @@ const Home = () => {
       name: "Michael Thompson",
       role: "Marketing",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      blurb: "A creative and innovative marketer with a talent for building brand awareness and engagement."
+      blurb: "A creative and innovative marketer with a talent for building brand awareness and engagement. "
     },
     {
       name: "James Carter",
@@ -59,7 +59,6 @@ const Home = () => {
 
         <div className="card-holder">
         {people.map((props) => {
-          // props.image name role blurb
           return (
             <div className="card-main">
               <img src={props.image} ></img>

@@ -48,9 +48,7 @@
     flex-direction: row;
     
     padding: 0px;
-    /* padding-left: 0;
-    padding-top: 0;
-    padding-bottom: 0; */
+
 
     margin-left: 0;
     margin-right: 0;
@@ -95,8 +93,12 @@
 }
 .card-txts-ab p {
     text-align: left;
+<<<<<<< Updated upstream
     padding-bottom: 5px;
     padding-right: 5px;
+=======
+    font-size: 90%;
+>>>>>>> Stashed changes
 }
 
 .spacer {
