@@ -7,12 +7,23 @@ export default props => {
     <Menu right>
         <img src="./sfwq-white.png"/>
 
+        <div className="mailing-list">
+            <a className="menu-item" href="/mailing">
+                Join our Mailing List!
+            </a>
+            <div className="divider"></div>
+        </div>
+
         <a className="menu-item" href="/home">
             Home
         </a>
 
         <a className="menu-item" href="/about">
-            About
+            About Us
+        </a>
+
+        <a className="menu-item" href="/events">
+            Events
         </a>
 
         <a className="menu-item" href="/volunteer">
@@ -27,15 +38,6 @@ export default props => {
             Contact
         </a>
 
-        <a className="menu-item" href="/events">
-            Events
-        </a>
-
-        <div className="mailing-list">
-            <a className="menu-item" href="/mailing">
-                Join our Mailing List!
-            </a>
-        </div>
     </Menu>
   );
 };

@@ -62,7 +62,6 @@
     margin-right: 0px;
     padding-right: 0px;
   }
-  
   /* Morph shape necessary with bubble or elastic */
   .bm-morph-shape {
     fill: #373a47;
@@ -72,6 +71,21 @@
   .bm-item-list {
     color: #b8b7ad;
     padding: 0.8em;
+  }
+
+  .divider {
+    margin: 0;
+    width: 80%;
+    height: 2px;
+    background-color: #f9fdff;
+    border-radius: 2px;
+
+    margin-top: 5px;
+  }
+
+  .mailing-list {
+    margin: 0;
+    padding-top: 10px;
   }
   
  /* Individual item */

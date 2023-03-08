@@ -95,6 +95,8 @@
 }
 .card-txts-ab p {
     text-align: left;
+    padding-bottom: 5px;
+    padding-right: 5px;
 }
 
 .spacer {

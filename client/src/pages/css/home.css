@@ -33,7 +33,7 @@
     font-size: 500%;
 }
 .home-h1 h1 span{
-    transition: 300ms ease;
+    transition: 2400ms ease;
 }
 .home-banner h1 span:hover {
     color: rgb(81, 136, 255);
@@ -138,6 +138,8 @@
 }
 .card-txts p {
     text-align: left;
+    padding-bottom: 5px;
+    padding-right: 5px;
 }
 /* .card-box {
     background-color: #D9D9D9;
