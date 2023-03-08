@@ -135,12 +135,9 @@
 }
 .card-txts p {
     text-align: left;
-<<<<<<< Updated upstream
     padding-bottom: 5px;
     padding-right: 5px;
-=======
     font-size: 90%;
->>>>>>> Stashed changes
 }
 /* .card-box {
     background-color: #D9D9D9;
