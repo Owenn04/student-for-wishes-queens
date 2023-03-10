@@ -36,7 +36,7 @@ const Home = () => {
     },
   ])
 
-  if  (people != null && people.length > 0) {
+  if (people != null && people.length > 0) {
     return (
       <div className='home'>
         <div className="home-banner">
