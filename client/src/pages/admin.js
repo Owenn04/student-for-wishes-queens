@@ -20,7 +20,7 @@ const Admin = () => {
     useEffect(() => {
         console.log("data fetched")
         const handleAdmin = async () =>{
-            const response = await fetch("http://localhost:3002/api/users/get")
+            const response = await fetch("http://localhost:3002/api/table/users/get")
             const newUsers = await response.json()
             await setUsers(newUsers)
             console.log(newUsers)

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from './AuthContext'
 import { useNavigate } from 'react-router-dom'
+import "./login.css"
 
 
 
@@ -35,25 +36,39 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className = "form-div">
+
+      <div className="form-title">
+        <h1>
+          Admin Login
+        </h1>
+        <div className="line"></div>
+      </div>
+
+      <form className="form-main" onSubmit={handleLogin}>
+
         <label>
-          Username:
+          <h1>Username:</h1>
           <input
             type="text"
+            className="username-input"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
+
         <label>
-          Password:
+          <h1>Password:</h1>
           <input
             type="password"
+            className="password-input"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
+
         <button type="submit">Login</button>
+
       </form>
     </div>
   )
