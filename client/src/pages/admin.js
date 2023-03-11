@@ -1,5 +1,5 @@
 import { useAuth } from './../Auth/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 
 
@@ -9,7 +9,10 @@ const Admin = () => {
 
     const handleLogout = (event) => {
         auth.logout()
-        navigate("/")
+        navigate("/login")
+    }
+    const showUser = (id) => {
+        navigate(`/admin/${id}`)
     }
 
     
@@ -50,11 +53,12 @@ const Admin = () => {
     if (users != null && users.length > 0){
         return(
             <div>
+                <Outlet/>
                 <table table className="table">
                     <thead>
                         <tr>
                             {Object.getOwnPropertyNames(users[0]).map((props) => {
-                                return (<th key={props}>{props.toUpperCase()}</th>)
+                                return (<th key={props}>{props.toUpperCase().replace(/_/g, " ")}</th>)
                             })}
                             <th>ACTIONS</th>
                         </tr>
@@ -72,7 +76,7 @@ const Admin = () => {
                                     <td>{props.last_login}</td>
                                     <td>
                                         <button className='button'>Delete</button>
-                                        <button className='button'>Show</button>
+                                        <button className='button' onClick={() => showUser(props.id)}>Show</button>
                                         <button className='button'>Edit</button>
                                     </td>
                                 </tr>
@@ -80,6 +84,7 @@ const Admin = () => {
                         })}
                     </tbody>
                 </table>
+                
             </div>
         )
     } else{

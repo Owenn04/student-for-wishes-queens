@@ -16,6 +16,7 @@ import './App.css';
 
 import Login from './Auth/login';
 import Admin from './pages/admin';
+import UserInfo from './pages/userInfo';
 import PrivateRoute from './Auth/PrivateRoute'
 import { AuthProvider} from './Auth/AuthContext';
 
@@ -58,7 +59,9 @@ function App() {
                   <Admin/>
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path=":id" element = {<UserInfo/>}/>
+            </Route>
           </Routes>
         </Router>
       </AuthProvider>

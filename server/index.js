@@ -67,7 +67,8 @@ app.post('/api/events/create', (req,res)=> {
 app.post('/api/users/post', (req, res) => {
     const email = req.body.email
     const password = req.body.password
-      
+    
+
     db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
         if (err) {
             console.error(err)
@@ -102,6 +103,7 @@ app.get("/api/users/get", (req, res) =>{
         res.send(result)
     })
 })
+
 
 
 // Route to get one post
