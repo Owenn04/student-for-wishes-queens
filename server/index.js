@@ -119,6 +119,18 @@ app.get("/api/event/:id", (req,res)=>{
             res.send(result)
         });   });
 
+app.delete('/api/users/delete/:id', (req, res) => {
+    const id = req.params.id
+    console.log(id)
+    db.query("DELETE FROM users WHERE id = ?", id, (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting user')
+        }
+            res.send(result)
+    })
+})
+
 
 
 // Route to like a post

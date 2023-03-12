@@ -15,6 +15,20 @@ const Admin = () => {
         navigate(`/admin/${id}`)
     }
 
+    const deleteUser = (id)=>{
+        fetch(`http://localhost:3002/api/users/delete/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            console.log(response)
+            alert("User Deleted")
+            window.location.reload()
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     
 
     useEffect(() => {
@@ -75,7 +89,7 @@ const Admin = () => {
                                     <td>{props.updated}</td>
                                     <td>{props.last_login}</td>
                                     <td>
-                                        <button className='button'>Delete</button>
+                                        <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
                                         <button className='button' onClick={() => showUser(props.id)}>Show</button>
                                         <button className='button'>Edit</button>
                                     </td>
