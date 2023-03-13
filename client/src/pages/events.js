@@ -67,7 +67,7 @@ const Events = () => {
               <h1>EVENTS</h1>
             </a>
           </div>
-          <h1>We have events to display currently, check back soon!</h1>
+          <h1>We have no events to display currently, check back soon!</h1>
           <div className="spacer"></div>
       </div>
   )}
