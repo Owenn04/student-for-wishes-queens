@@ -1,3 +1,9 @@
+.volunteer {
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    box-shadow: inset 0 0 0 2000px rgba(63, 90, 163, 0.768);
+}
+
 .volunteer-banner {
     width: 100%;
     height: 300px;
@@ -16,8 +22,202 @@
     font-size: 72px;
 }
 
+.volunteer-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    min-width: 325px;
+    gap: 20px;
+    padding: 40px;
+
+    margin-top: 80px;
+
+    background-color: #D9D9D9;
+    
+
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #006BB6;
+}
+
+.volunteer-form form {
+    border: none;
+}
+.volunteer-form h1 {
+    text-align: left;
+    color: #00101b;
+    font-size: 30px;
+}
+.volunteer-form p {
+    text-align: left;
+    color: #00101b;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.volunteer-inputbox {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+}
+.volunteer-msgbox {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+    margin-bottom: 15px;
+}
+.volunteer-form button {
+    
+    border-style: solid;
+    border-width: 0px;
+    border-color: #082c46;
+    border-radius: 20px;
+
+    background-color: #006BB6;
+    color: #f9fdff;
+
+    align-self: flex-end;
+    width: 225px;
+    height: 65px;
+
+    font-family: FuturaPT;
+    font-size: 40px;
+    
+    transition: 200ms ease;
+}
+.volunteer-form button:hover {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #082c46;
+    background-color: #074a7a;
+    transition: 400ms ease;
+}
+
+
+.vevent-cards h1{
+    color: #f9fdff;
+    font-size: 96px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.vevent-card-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: 60vw;
+    background-color: #74CDFF;
+    border-radius: 25px;
+
+    margin-bottom: 50px;
+}
+
+.vevent-card-holder:first-child {
+    flex-grow: 1;
+}
+
+.vevent-card-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: 100%;
+}
+.vevent-elements {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0;
+    width: 100%;
+}
+.vevent-card-main img {
+    margin: 0;
+    aspect-ratio: 1/1;
+
+    width: 20vw;
+    min-width: auto;
+
+    object-fit: cover;
+    border-radius: 25px;
+}
+.vevent-txts {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: left;
+
+    width: 100%;
+    height: 100%;
+}
+
+.vevent-txts h1{
+    margin-top: 10px;
+    font-family: FuturaPTBold;
+    color: #0D3068;
+    font-size: 22px;
+    
+}
+.vevents-txts-sub {
+    color: #0D3068;
+    margin: 0;
+}
+.vevents-txts-sub span {
+    font-family: FuturaPTBold;
+    text-align: left;
+}
+.vevent-txts p {
+    margin-top: 15px;
+    color: #000a1a;
+
+    flex-grow: 1;
+    margin-bottom: auto;
+
+}
+
+.vevent-button {
+    margin: 0;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.vevent-button a button{
+    background-color: #0E2B58;
+    border-radius: 25px;
+    border: none;
+
+    width: 140px;
+    height: 45px;
+
+
+    color: #f9fdff;
+    font-family: FuturaPTBold;    
+    font-size: 20px;
+
+    transition: 200ms ease;
+
+}
+.vevent-button a button:hover {
+    color: #74CDFF;
+    transition: 500ms ease;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #082c46;
+    background-color: #074a7a;
+
+}
+
 .spacer {
     width: 100%;
-    height: 1000px;
+    height: 200px;
     color: white;
 }
+

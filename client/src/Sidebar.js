@@ -34,8 +34,8 @@ export default props => {
             Donate
         </a>
 
-        <a className="menu-item" href="/contact">
-            Contact
+        <a className="menu-item" href="/connect">
+            Connect
         </a>
 
     </Menu>

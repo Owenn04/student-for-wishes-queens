@@ -42,7 +42,9 @@
     flex-wrap: wrap;
 
     gap: 75px;
-
+}
+.events h1 {
+    font-size: 5vw;
 }
 
 

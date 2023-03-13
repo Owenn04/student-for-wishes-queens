@@ -4,7 +4,7 @@
 
 .home-banner {
     width: 100%;
-    height: 475px;
+    height: 30vw;
     background: url(../assets/placeholder1.jpg);
     background-position-x: 0px;
     background-position-y: -350px;
@@ -139,43 +139,7 @@
     padding-right: 5px;
     font-size: 90%;
 }
-/* .card-box {
-    background-color: #D9D9D9;
-    border-radius: 75px;
 
-    width: 20vw;
-
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 20px;
-    margin-top: 20px;
-} */
-/* .card-imgbox {
-    margin-right: 60%;
-    margin-left: 0;
-    margin-top: -15px;
-}
-.card-img {
-    width: 180px;
-    height: 180px;
-    
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-}
-.card-name {
-    margin-left: 190px;
-    margin-top: -160px;
-    color: #002037;
-    font-family: FuturaPTBold;
-    text-align: left;
-}
-.card-blurb {
-    text-align: left;
-    width: 200px;
-    margin-right: 60px;
-} */
 .viewmore {
     margin-top: 40px;
     background-color: #006BB6;
