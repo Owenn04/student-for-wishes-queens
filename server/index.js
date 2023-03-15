@@ -131,6 +131,23 @@ app.delete('/api/users/delete/:id', (req, res) => {
     })
 })
 
+app.put('/api/users/put/:id', (req, res) => {
+    const id = req.params.id
+    console.log(id) 
+
+    const name = req.body.name
+    const email = req.body.email
+    const role = req.body.role
+    const updated = req.body.updated
+    db.query("UPDATE users SET name = ?, email = ?, role = ?, updated = ? WHERE id = ?", [name, email, role, updated, id], (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting user')
+        }
+            res.send(result)
+    })
+})
+
 
 
 // Route to like a post

@@ -21,7 +21,7 @@ const Login = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password}),
-      });
+      })
       if (response.status === 200) {
         auth.login(email, password, true)
         navigate('/admin')

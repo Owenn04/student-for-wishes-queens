@@ -15,6 +15,17 @@ const Admin = () => {
         navigate(`/admin/${id}`)
     }
 
+    //State Values
+
+    const [users, setUsers] = useState([])
+    const [showForm, setShowForm] = useState(false)
+    const [selectedId, setSelectedId] = useState(null)
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [role, setRole] = useState('')
+
+
     const deleteUser = (id)=>{
         fetch(`http://localhost:3002/api/users/delete/${id}`, {
             method: 'DELETE'
@@ -29,8 +40,29 @@ const Admin = () => {
         })
     }
 
-    
+    const handleEdit = async (e) => {
+        e.preventDefault();
+        console.log("submit went through")
+        const response = await fetch(`http://localhost:3002/api/users/put/${selectedId}`,{
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, role, updated: new Date() }),
 
+            //right now it creates a new date object but we only want first half
+        })
+        if (response.status === 200) {
+          alert("Row Updated")
+          window.location.reload()
+        } else {
+          console.log("Error")
+        }
+    }
+
+      const handleEditClick = (id) => {
+        setSelectedId(id)
+        setShowForm(true)
+      }
+      
     useEffect(() => {
         console.log("data fetched")
         const handleAdmin = async () =>{
@@ -42,31 +74,26 @@ const Admin = () => {
         handleAdmin()
     }, [])
 
-
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            name: "Tester McTesterson",
-            email: "test@test.com",
-            role: "admin",
-            created: "2020-03-07 14:53:35",
-            updated: "2023-03-07 15:46:24",
-            last_login: "2023-03-07 15:46:24",
-        },
-        {
-            id: 2,
-            name: "Testie McTesterson",
-            email: "tester@test.com",
-            role: "admin",
-            created: "2023-03-07 14:58:23",
-            updated: "2023-03-07 15:46:24",
-            last_login: "2023-03-07 15:46:24",
-        }    
-    ])
+    
+    
 
     if (users != null && users.length > 0){
         return(
             <div>
+                
+                {showForm && (
+                    <form onSubmit={handleEdit}>
+                        <label>Name:</label>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        <label>Email:</label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label>Role:</label>
+                        <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
+                        <button type="submit">Save</button>
+                        <button onClick={() => setShowForm(false)}>x</button>
+                    </form>
+                )}
+
                 <Outlet/>
                 <table table className="table">
                     <thead>
@@ -91,7 +118,7 @@ const Admin = () => {
                                     <td>
                                         <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
                                         <button className='button' onClick={() => showUser(props.id)}>Show</button>
-                                        <button className='button'>Edit</button>
+                                        <button className='button' onClick={() => handleEditClick(props.id)}>Edit</button>
                                     </td>
                                 </tr>
                             )
