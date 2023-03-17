@@ -78,19 +78,19 @@ app.post('/api/users/post', (req, res) => {
       
         if (results.length > 0) {
             const user = results[0];
-            const isPasswordMatch = await bcrypt.compare(password, user.password);
+            const isPasswordMatch = await bcrypt.compare(password, user.password)
             
             /*console.log("Stored password hash: ", user.password);
             console.log("Inputted password hash: ", await bcrypt.hash(password, saltRounds));
             console.log("Is password match: ", isPasswordMatch);*/
             
             if (isPasswordMatch) {
-              res.status(200).send('Login successful');
+              res.status(200).send('Login successful')
             } else {
-              res.status(401).send('Invalid username or password');
+              res.status(401).send('Invalid username or password')
             }
         } else {
-            res.status(401).send('Invalid username or password');
+            res.status(401).send('Invalid username or password')
         }
     })
 })
@@ -137,9 +137,11 @@ app.put('/api/users/put/:id', (req, res) => {
 
     const name = req.body.name
     const email = req.body.email
+    const password = bcrypt.hashSync(req.body.password, salt)
     const role = req.body.role
     const updated = req.body.updated
-    db.query("UPDATE users SET name = ?, email = ?, role = ?, updated = ? WHERE id = ?", [name, email, role, updated, id], (err, result)=>{
+
+    db.query("UPDATE users SET name = ?, email = ?, password = ? role = ?, updated = ? WHERE id = ?", [name, email, password, role, updated, id], (err, result)=>{
         if(err) {
             console.log(err)
             res.status(500).send('Error deleting user')

@@ -23,6 +23,7 @@ const Admin = () => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
 
 
@@ -46,7 +47,7 @@ const Admin = () => {
         const response = await fetch(`http://localhost:3002/api/users/put/${selectedId}`,{
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, role, updated: new Date() }),
+            body: JSON.stringify({ name, email, password, role, updated: new Date().toISOString().substring(0,10) }),
 
             //right now it creates a new date object but we only want first half
         })
@@ -87,6 +88,8 @@ const Admin = () => {
                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                         <label>Email:</label>
                         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <label>Password:</label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <label>Role:</label>
                         <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
                         <button type="submit">Save</button>
