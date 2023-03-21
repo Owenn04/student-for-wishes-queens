@@ -25,7 +25,9 @@ const Admin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
+    const [showCreate, setShowCreate] = useState(false)
 
     const deleteUser = (id)=>{
         fetch(`http://localhost:3002/api/users/delete/${id}`, {
@@ -59,9 +61,25 @@ const Admin = () => {
         }
     }
 
-      const handleEditClick = (id) => {
-        setSelectedId(id)
+      const handleEditClick = (props) => {
+        setSelectedId(props.id)
+        setName(props.name)
+        setEmail(props.email)
+        setRole(props.role)
         setShowForm(true)
+
+      }
+
+      const handleCreateUser = async (e) => {
+        
+      }
+      const handleCreateClick = () => {
+        setName('')
+        setEmail('')
+        setRole('')
+        setPassword('')
+        setConfirmPassword('')
+        setShowCreate(true)
       }
       
     useEffect(() => {
@@ -75,8 +93,6 @@ const Admin = () => {
         handleAdmin()
     }, [])
 
-    
-    
 
     if (users != null && users.length > 0){
         return(
@@ -85,7 +101,7 @@ const Admin = () => {
                 {showForm && (
                     <form onSubmit={handleEdit}>
                         <label>Name:</label>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                         <label>Email:</label>
                         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <label>Password:</label>
@@ -96,42 +112,69 @@ const Admin = () => {
                         <button onClick={() => setShowForm(false)}>x</button>
                     </form>
                 )}
-
+                {showCreate && (
+                    <form onSubmit={handleCreateUser}>
+                        <label>Name:</label>
+                        <br/>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <br/>
+                        <label>Email:</label>
+                        <br/>
+                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <br/>
+                        <label>Password:</label>
+                        <br/>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <br/>
+                        <label>Confirm Password:</label>
+                        <br/>
+                        <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                        <br/>
+                        <label>Role:</label>
+                        <br/>
+                        <input type="text" value={role} onChange={(e) => setRole(e.target.value)}/>
+                        <br/>
+                        <button className='button' onClick={() => setShowCreate(false)}>Back to Users</button>
+                        <button className="button" type="submit">Create User</button>
+                    </form>
+                )}
                 <Outlet/>
-                <table table className="table">
-                    <thead>
-                        <tr>
-                            {Object.getOwnPropertyNames(users[0]).map((props) => {
-                                return (<th key={props}>{props.toUpperCase().replace(/_/g, " ")}</th>)
+                {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create User</button>)}
+                <div className="table-container">
+                    <table table className="table">
+                        <thead>
+                            <tr>
+                                {Object.getOwnPropertyNames(users[0]).map((props) => {
+                                    return (<th key={props}>{props.toUpperCase().replace(/_/g, " ")}</th>)
+                                })}
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((props) => {
+                                return(
+                                    <tr key = {props.id}>
+                                        <td>{props.id}</td>
+                                        <td>{props.name}</td>
+                                        <td>{props.email}</td>
+                                        <td>{props.role}</td>
+                                        <td>{props.created}</td>
+                                        <td>{props.updated}</td>
+                                        <td>{props.last_login}</td>
+                                        <td>
+                                            <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
+                                            <button className='button' onClick={() => showUser(props.id)}>Show</button>
+                                            <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
+                                        </td>
+                                    </tr>
+                                )
                             })}
-                            <th>ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((props) => {
-                            return(
-                                <tr key = {props.id}>
-                                    <td>{props.id}</td>
-                                    <td>{props.name}</td>
-                                    <td>{props.email}</td>
-                                    <td>{props.role}</td>
-                                    <td>{props.created}</td>
-                                    <td>{props.updated}</td>
-                                    <td>{props.last_login}</td>
-                                    <td>
-                                        <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
-                                        <button className='button' onClick={() => showUser(props.id)}>Show</button>
-                                        <button className='button' onClick={() => handleEditClick(props.id)}>Edit</button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-                
+                        </tbody>
+                    </table>
+                </div>
+                <button onClick = {handleLogout}>Logout!</button>
             </div>
-        )
-    } else{
+        )} else{
         return(
             <div>
                 <h1>This is the admin panel !!!</h1>
