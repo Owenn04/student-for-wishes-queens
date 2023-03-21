@@ -160,7 +160,7 @@ const Admin = () => {
                         <br/>
                         <input type="text" value={role} onChange={(e) => setRole(e.target.value)}/>
                         <br/>
-                        <button className='button' onClick={() => setShowCreate(false)}>Back to Users</button>
+                        <button className='button' onClick={() => setShowCreate(false)}>Close</button>
                         <button className="button" type="submit">Create User</button>
                     </form>
                 )}
@@ -202,7 +202,9 @@ const Admin = () => {
                 {(
                     <div className="donations">
                         <h1>Update the DONATIONS Button:</h1>
-                        <p>(!) This will change where <span><a href="/donate">the donation page</a></span> button takes a user when pressed.</p>
+                        <p>(!) This will change where <span><a href="/donate">the donation page</a></span> button takes a user when pressed.
+                            <br/>Links are formatted as: http://example.com, ensure http:// or https:// is included.
+                        </p>
                         <form className="donations-form" onSubmit={updateDonateLink}>
                             <input type="url" value={ donateLink } onChange={(e) => setDonateLink(e.target.value)}></input>
                             <button type="submit" className="button">Save</button>

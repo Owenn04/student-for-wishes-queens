@@ -9,14 +9,13 @@
 
     margin-bottom: 30px;
 }
-
 .donations h1 {
     font-family: FuturaPTBold;
     font-size: 30px;
 }
 .donations p {
     font-size: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .donations-form {
@@ -26,10 +25,11 @@
 }
 .donations-form input {
     width: 40vw;
-    height: 3vh;
+    height: 3.3vh;
 
     margin: 10px;
     margin-bottom: 0px;
+    padding: 6px;
 }
 .donations-form button {
     margin-top: 20px;
@@ -50,3 +50,7 @@
     color: white;
 }
 
+.create-user button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
