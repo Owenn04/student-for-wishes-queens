@@ -45,6 +45,7 @@
 }
 .events h1 {
     font-size: 5vw;
+    padding: 10px;
 }
 
 
@@ -102,6 +103,8 @@
 
 .event-txts h1{
     margin-top: 10px;
+    margin-left: -10px;
+
     font-family: FuturaPTBold;
     color: #0D3068;
     font-size: 22px;

@@ -1,0 +1,52 @@
+.donations {
+    background-color: rgb(250, 254, 255);
+    width: 50vw;
+    padding: 20px;
+    
+    border-style: solid;
+    border-radius: 20px;
+    border-color: rgb(219, 250, 255);
+
+    margin-bottom: 30px;
+}
+
+.donations h1 {
+    font-family: FuturaPTBold;
+    font-size: 30px;
+}
+.donations p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.donations-form {
+    margin: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.donations-form input {
+    width: 40vw;
+    height: 3vh;
+
+    margin: 10px;
+    margin-bottom: 0px;
+}
+.donations-form button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.donations-form h2 {
+    font-family: FuturaPTBold;
+    margin-bottom: 20px;
+}
+.donations-form h1 span {
+    margin-left: 6px;
+}
+
+.spacer {
+    width: 100%;
+    height: 200px;
+    color: white;
+}
+

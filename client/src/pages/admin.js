@@ -1,7 +1,7 @@
 import { useAuth } from './../Auth/AuthContext'
 import { Outlet, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-
+import "./css/admin.css"
 
 const Admin = () => {
     const auth = useAuth()
@@ -20,6 +20,9 @@ const Admin = () => {
     const [users, setUsers] = useState([])
     const [showForm, setShowForm] = useState(false)
     const [selectedId, setSelectedId] = useState(null)
+
+    const [donateLink, setDonateLink] = useState('')
+    const [oldDonate, setOldDonate] = useState('')
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -61,6 +64,24 @@ const Admin = () => {
         }
     }
 
+    const updateDonateLink = async(e) => {
+        e.preventDefault();
+        console.log("submitted")
+        const response = await fetch(`http://localhost:3002/api/donation/put`,{
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ donateLink }),
+
+        })
+        if (response.status === 200) {
+            console.log(donateLink)
+            alert("Donate Link Updated.")
+            window.location.reload()
+          } else {
+            console.log("Error")
+          }
+    }
+
       const handleEditClick = (props) => {
         setSelectedId(props.id)
         setName(props.name)
@@ -81,7 +102,7 @@ const Admin = () => {
         setConfirmPassword('')
         setShowCreate(true)
       }
-      
+    
     useEffect(() => {
         console.log("data fetched")
         const handleAdmin = async () =>{
@@ -89,6 +110,11 @@ const Admin = () => {
             const newUsers = await response.json()
             await setUsers(newUsers)
             console.log(newUsers)
+
+            const donate = await fetch("http://localhost:3002/api/donation/get")
+            const newDonate = await donate.json()
+            await setDonateLink(newDonate[0]["link"])
+            await setOldDonate(newDonate[0]["link"])
         }
         handleAdmin()
     }, [])
@@ -172,13 +198,27 @@ const Admin = () => {
                         </tbody>
                     </table>
                 </div>
-                <button onClick = {handleLogout}>Logout!</button>
+                
+                {(
+                    <div className="donations">
+                        <h1>Update the DONATIONS Button:</h1>
+                        <p>(!) This will change where <span><a href="/donate">the donation page</a></span> button takes a user when pressed.</p>
+                        <form className="donations-form" onSubmit={updateDonateLink}>
+                            <input type="url" value={ donateLink } onChange={(e) => setDonateLink(e.target.value)}></input>
+                            <button type="submit" className="button">Save</button>
+                            <h2>Current Link: <span><a>{ oldDonate }</a></span></h2>
+                        </form>
+                    </div>
+                )}
+
+                <button onClick = {handleLogout} className="button">Logout</button>
+                <div className="spacer"></div>
             </div>
         )} else{
         return(
             <div>
                 <h1>This is the admin panel !!!</h1>
-                <button onClick = {handleLogout}>Logout!</button>
+                <button onClick = {handleLogout}>Logout</button>
             </div>
         )
     }

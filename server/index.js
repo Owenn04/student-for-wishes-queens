@@ -176,3 +176,28 @@ app.delete('/api/delete/:id',(req,res)=>{
 app.listen(PORT, ()=>{
     console.log(`Server is running on ＄{PORT}`)
 })
+
+
+// Query to get donation link
+app.get("/api/donation/get", (req,res)=>{
+
+    db.query("SELECT * FROM donate_link", (err,result)=>{
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    });   
+});
+
+app.put('/api/donation/put', (req, res) => {
+
+    const link = req.body.donateLink
+
+    db.query("UPDATE donate_link SET link = ?", [link], (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting user')
+        }
+            res.send(result)
+    })
+})

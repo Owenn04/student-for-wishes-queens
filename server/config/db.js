@@ -12,6 +12,11 @@ db.connect(function(err) {
         if (err) throw err;
         console.log(result);
     });
+
+    db.query("SELECT * FROM donate_link", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+    });
 });
 
 module.exports = db;
