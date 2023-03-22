@@ -16,7 +16,6 @@ const PORT = 3002
 app.use(cors())
 app.use(express.json())
 
-<<<<<<< HEAD
 // Code I copied to upload image to image folder
 const upload = multer({
   storage: multer.diskStorage({
@@ -27,7 +26,8 @@ const upload = multer({
       cb(null, Date.now() + '-' + file.originalname)
     }
   })
-=======
+})
+
 // Get all staff for about page in db
 
 app.get("/api/staff/get", (req,res)=>{
@@ -56,7 +56,6 @@ app.post('/api/staff/create', (req, res) => {
         }
         res.status(200).send('Data inserted successfully');
     })
->>>>>>> 87e31a5eff1624521eea8416e0f2d22912df6cb7
 })
 
 // Query for sending name and email to mailing table
