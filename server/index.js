@@ -11,6 +11,35 @@ const PORT = 3002
 app.use(cors())
 app.use(express.json())
 
+// Get all staff for about page in db
+
+app.get("/api/staff/get", (req,res)=>{
+    db.query("SELECT * FROM staff", (err,result)=>{
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    });
+});
+
+// Add staff to db
+
+app.post('/api/staff/create', (req, res) => {
+    console.log("data create for mailing")
+    const name = req.body.name
+    const job = req.body.job;
+    const bio = req.body.bio;
+    const image = req.body.image;
+
+    db.query("INSERT INTO staff (Name, Job, Bio, Image) VALUES (?, ?)", [name, job, bio, image], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal server error');
+            return;
+        }
+        res.status(200).send('Data inserted successfully');
+    })
+})
 
 // Query for sending name and email to mailing table
 
