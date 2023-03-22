@@ -2,6 +2,18 @@ import "./css/about.css"
 import React, { useState, useEffect } from "react"
 
 const About = () => {
+  useEffect(() => {
+    console.log("data fetched")
+    const handleAdmin = async () =>{
+      const staff = await fetch("http://localhost:3002/api/staff/get")
+      const people_returned = await staff.json()
+      await setPeople(people_returned)
+      console.log(people_returned);
+    }
+    handleAdmin()
+  }, [])
+  const [people, setPeople] = useState([])
+  /*
   const [people, setPeople] = useState([
     { // NOTE: Used chatgpt to generate some placeholder people
       name: "Sarah Davis",
@@ -64,7 +76,7 @@ const About = () => {
       blurb: "2/2 Best Back-End Duo 2023"
     }
   ])
-
+  */
   if  (people != null && people.length > 0) {
     return (
       <div className='about'>
@@ -87,10 +99,10 @@ const About = () => {
         {people.map((props) => {
           return (
             <div className="card-main-ab">
-              <img src={props.image} ></img>
+              <img src={props.Image} ></img>
               <div className="card-txts-ab">
-                <h1>{props.name} | <span>{props.role}</span></h1>
-                <p>{props.blurb}</p>
+                <h1>{props.Name} | <span>{props.Job}</span></h1>
+                <p>{props.Bio}</p>
               </div>
             </div>
           )
