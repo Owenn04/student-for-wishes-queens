@@ -15,6 +15,8 @@ const Events = () => {
       const newEvents = await response.json()
       await setEvents(newEvents)
       console.log(newEvents)
+
+      
     }
     handleEvents()
   }, [])
@@ -23,18 +25,19 @@ const Events = () => {
     return(
       <div className='events'>
         <div className="events-banner">
-          <a>
+          <a href = '#'>
             <h1>EVENTS</h1>
           </a>
         </div>
         
           {events.map((props) => {
+            console.log(props)
             return(
             <div key = {props.Id} className = 'event-card-holder'>
 
               <div className = "event-card-main">
                 <div className = "event-elements">
-                  <img src={props.Image}></img>
+                <img src={require(`../images/${props.Image}`)} alt="Image"/>
                   <div className="event-txts">
                     <h1>{props.Title}</h1>
                     <div className = "events-txts-sub"><span>Location:</span> {props.Location} -

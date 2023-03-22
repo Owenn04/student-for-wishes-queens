@@ -16,6 +16,8 @@ import './App.css';
 
 import Login from './Auth/login';
 import Admin from './pages/admin';
+import AdminEvents from './pages/adminEvents'
+
 import UserInfo from './pages/userInfo';
 import PrivateRoute from './Auth/PrivateRoute'
 import { AuthProvider} from './Auth/AuthContext';
@@ -52,16 +54,12 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/mailing" element={<Mailing />} />
             <Route path = "/login" element = {<Login/>}/>
-            <Route
-              path = "/admin"
-              element={
-                <PrivateRoute>
-                  <Admin/>
-                </PrivateRoute>
-              }
-            >
-              <Route path=":id" element = {<UserInfo/>}/>
+            
+            <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>}>
+              <Route path="events" element={<AdminEvents />} />
+              <Route path=":id" element={<UserInfo />} />
             </Route>
+            
           </Routes>
         </Router>
       </AuthProvider>
@@ -69,6 +67,10 @@ function App() {
   )
 }
 
+//<Routes>
+  //<Route path = '/admin/events' element = {<AdminEvents/>}/>
+  //<Route path = '/admin' element = {<Admin/>}/>
+//</Routes>
 
 
 

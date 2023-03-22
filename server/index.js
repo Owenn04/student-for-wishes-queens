@@ -1,4 +1,8 @@
 const express = require('express')
+const multer = require('multer')
+const path = require('path')
+
+
 const db = require('./config/db')
 const cors = require('cors')
 
@@ -6,14 +10,25 @@ const bcrypt = require('bcrypt');
 const saltRounds = 7;
 
 
+
 const app = express()
 const PORT = 3002
 app.use(cors())
 app.use(express.json())
 
+// Code I copied to upload image to image folder
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, path.join(__dirname, '../client/src/images'))
+    },
+    filename: function(req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname)
+    }
+  })
+})
 
 // Query for sending name and email to mailing table
-
 app.post('/api/mailing/create', (req, res) => {
     console.log("data create for mailing")
     const name = req.body.name
@@ -32,38 +47,43 @@ app.post('/api/mailing/create', (req, res) => {
 
 // Query to get all events from events table
 app.get("/api/events/get", (req,res)=>{
-
+    console.log("events got")
     db.query("SELECT * FROM events", (err,result)=>{
         if(err) {
             console.log(err)
+            res.status(500).send("Error getting events")
         }
         res.send(result)
-    });   
-});
+        console.log(result)
+    })  
+})
 
-// Query to create an event an add it to the mailing table
-app.post('/api/events/create', (req,res)=> {
+// Query to create an event an add it to the event table and uploads the image
+app.post('/api/events/create', upload.single('Image'), (req, res) => {
     console.log("event created")
     //const id = req.body.Id
     const title = req.body.Title
     const date = req.body.Date
     const description = req.body.Description
-    const image = req.body.Image
+    const image = req.file ? req.file.filename : ''
     const location = req.body.Location
-
+    console.log(image)
 
     // right now its capitalzied just like the table but i will change all to lowercase later
+    // not sure if i will cuz capitals is used everywhere now :skull:
 
     db.query("INSERT INTO events (Title, Date, Description, Image, Location) VALUES (?,?,?,?,?)",[title, date, description, image, location], (err,result)=>{
         if (err) {
             console.error(err)
             res.status(500).send('Internal server error')
             return
-          }
-          res.status(200).send('Data inserted successfully')
-        }) 
+        }
+        res.status(200).send('Data inserted successfully')
     })
+    
+})
 
+//Query to check if password entered is the same as the one in the db.
 app.post('/api/users/post', (req, res) => {
     const email = req.body.email
     const password = req.body.password
@@ -95,8 +115,7 @@ app.post('/api/users/post', (req, res) => {
     })
 })
 
-
-
+//Query to get user data
 app.get("/api/users/get", (req, res) =>{
     db.query("SELECT id, name, email, role, created, updated, last_login FROM users", (err, result) => {
         if(err) {
@@ -107,8 +126,7 @@ app.get("/api/users/get", (req, res) =>{
 })
 
 
-
-// Route to get one post
+// Route to get one post (not used atm)
 app.get("/api/event/:id", (req,res)=>{
     const id = req.params.id;
     db.query("SELECT * FROM events WHERE id = ?", id,
@@ -118,6 +136,7 @@ app.get("/api/event/:id", (req,res)=>{
             }
             res.send(result)
         });   });
+
 
 app.delete('/api/users/delete/:id', (req, res) => {
     const id = req.params.id
@@ -131,17 +150,18 @@ app.delete('/api/users/delete/:id', (req, res) => {
     })
 })
 
+//Query to update user in db.
 app.put('/api/users/put/:id', (req, res) => {
     const id = req.params.id
     console.log(id) 
 
     const name = req.body.name
     const email = req.body.email
-    const password = bcrypt.hashSync(req.body.password, salt)
+    const password = bcrypt.hashSync(req.body.password, saltRounds)
     const role = req.body.role
     const updated = req.body.updated
 
-    db.query("UPDATE users SET name = ?, email = ?, password = ? role = ?, updated = ? WHERE id = ?", [name, email, password, role, updated, id], (err, result)=>{
+    db.query("UPDATE users SET name = ?, email = ?, password = ?, role = ?, updated = ? WHERE id = ?", [name, email, password, role, updated, id], (err, result)=>{
         if(err) {
             console.log(err)
             res.status(500).send('Error deleting user')
@@ -150,9 +170,32 @@ app.put('/api/users/put/:id', (req, res) => {
     })
 })
 
+//Query to update event (not fully working a the moment)
+app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) => {
+    
+    const id = req.params.id
+    console.log(id)
+
+    const title = req.body.title
+    const date = req.body.date
+    const description = req.body.description
+    const location = req.body.location
+    const image = req.file
+
+    // MySQL query to insert the data into the database
+    db.query("UPDATE events SET Title = ?, Date = ?, Description = ?, Location = ?, Image = ? WHERE Id = ?", [title, date, description, location, image, id], (err, result) => {
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error Updating Event')
+        }
+            res.send(result)
+    })
+})
 
 
-// Route to like a post
+
+
+// Route to like a post (not used atm)
 app.post('/api/like/:id',(req,res)=>{
 
     const id = req.params.id;
@@ -163,8 +206,7 @@ app.post('/api/like/:id',(req,res)=>{
     });
 });
 
-// Route to delete a post
-
+// Route to delete a post (not used atm)
 app.delete('/api/delete/:id',(req,res)=>{
     const id = req.params.id;
 
@@ -173,6 +215,7 @@ app.delete('/api/delete/:id',(req,res)=>{
             console.log(err)
         } }) })
 
+//RUN server on port 
 app.listen(PORT, ()=>{
     console.log(`Server is running on ＄{PORT}`)
 })
