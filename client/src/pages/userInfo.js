@@ -39,11 +39,11 @@ const UserInfo = () => {
                             <th>{user.name}'s Information</th>
                             <th>
                                 <a className="button" href="../admin">
+                                    <span>Close</span>
                                     <span className="icon-text">
                                         <span className="icon">
                                             <i class="fa-solid fa-reply-all"></i>
                                         </span>
-                                        <span>Back to users</span>
                                     </span>
                                 </a>
                             </th>

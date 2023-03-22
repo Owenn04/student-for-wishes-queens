@@ -47,17 +47,19 @@ const Contact = () => {
         <div className="contact-cards">
         {cards.map((props) => {
               return(
-              <a 
-                key = {props.id} 
-                className = 'contact-card'
-                href={props.link}
-                target="_blank"
-              >
-                  <img 
-                  src={props.image}
-                  />
-                  <h1>{props.title}</h1>
-              </a>
+              <div className="contact-main">
+                <a 
+                  key = {props.id} 
+                  className = 'contact-card'
+                  href={props.link}
+                  target="_blank"
+                >
+                    <img 
+                    src={props.image}
+                    />
+                    <h1>{props.title}</h1>
+                </a>
+              </div>
               )
         })}
         </div>

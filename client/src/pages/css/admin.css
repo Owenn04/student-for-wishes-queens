@@ -1,3 +1,9 @@
+.all-forms {
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+}
+
 .donations {
     background-color: rgb(250, 254, 255);
     width: 50vw;
@@ -43,6 +49,191 @@
 .donations-form h1 span {
     margin-left: 6px;
 }
+.create-user button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: 20vw;
+
+    background-color: rgb(250, 254, 255);
+    border-color: rgb(219, 250, 255);
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.edit-form label {
+    text-align: left;
+    margin: 0 0 auto;
+    margin-bottom: 2px;
+    margin-top: 10px;
+    font-family: FuturaPT;
+}
+.edit-form input {
+    padding: 2px;
+    max-width: 100%;
+}
+.edit-form h1 {
+    font-family: FuturaPT;
+    font-size: 20px;
+}
+.edit-form h1 span {
+    font-family: FuturaPTBold;
+    font-size: 20px;
+}
+
+.edit-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.edit-save {
+    width: 16vw;
+    margin-right: 1vw;
+
+    background-color: rgb(250, 254, 255);
+    color: rgb(85,85,85);
+    font-size: 20px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+}
+.edit-save:hover {
+    border-color: rgb(219, 255, 220);
+    background-color: rgb(250, 255, 251);
+    color:rgb(6, 36, 6);
+    transition: 200ms ease;
+}
+
+.edit-close {
+    aspect-ratio: 1/1;
+    width: 3vw;
+
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    font-size: 24px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+    
+}
+.edit-close:hover {
+    border-color: rgb(255, 219, 219);
+    background-color: rgb(255, 250, 250);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
+}
+
+.edit-gr {
+    flex-grow: 1;
+    padding: 2px;
+    width: 100%;
+}
+.edit-gr input {
+    width: 100%;
+}
+
+.create-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.create-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: 20vw;
+
+    background-color: rgb(250, 254, 255);
+    border-color: rgb(219, 250, 255);
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.create-form label {
+    text-align: left;
+    margin: 0 0 auto;
+    margin-bottom: 2px;
+    margin-top: 10px;
+    font-family: FuturaPT;
+}
+.create-form input {
+    padding: 2px;
+    max-width: 100%;
+}
+.create-form h1 {
+    font-family: FuturaPTBold;
+    font-size: 20px;
+}
+.create-form h1 span {
+    font-family: FuturaPTBold;
+    font-size: 20px;
+}
+
+.create-create {
+    width: 16vw;
+    margin-right: 1vw;
+
+    background-color: rgb(250, 254, 255);
+    color: rgb(85,85,85);
+    font-size: 20px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+}
+.create-create:hover {
+    border-color: rgb(219, 255, 220);
+    background-color: rgb(250, 255, 251);
+    color:rgb(6, 36, 6);
+    transition: 200ms ease;
+}
+
+.create-close {
+    aspect-ratio: 1/1;
+    width: 3vw;
+
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    font-size: 24px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+    
+}
+.create-close:hover {
+    border-color: rgb(255, 219, 219);
+    background-color: rgb(255, 250, 250);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
+}
 
 .spacer {
     width: 100%;
@@ -50,7 +241,47 @@
     color: white;
 }
 
-.create-user button {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.button {
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: rgb(90, 184, 199);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.button:hover {
+    border-color: rgb(90, 97, 199);
+    background-color: rgb(250, 250, 255);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
+}
+.create-user-button {
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+    
+    width: 125px;
+    height: 35px;
+
+    transform: translateX(-395px);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.create-user-button:hover {
+    border-color: rgb(219, 219, 255);
+    background-color: rgb(250, 250, 255);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
 }

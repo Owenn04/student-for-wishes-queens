@@ -124,93 +124,107 @@ const Admin = () => {
         return(
             <div>
                 
-                {showForm && (
-                    <form onSubmit={handleEdit}>
-                        <label>Name:</label>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                        <label>Email:</label>
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <label>Password:</label>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <label>Role:</label>
-                        <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
-                        <button type="submit">Save</button>
-                        <button onClick={() => setShowForm(false)}>x</button>
-                    </form>
-                )}
-                {showCreate && (
-                    <form onSubmit={handleCreateUser}>
-                        <label>Name:</label>
-                        <br/>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                        <br/>
-                        <label>Email:</label>
-                        <br/>
-                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                        <br/>
-                        <label>Password:</label>
-                        <br/>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        <br/>
-                        <label>Confirm Password:</label>
-                        <br/>
-                        <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-                        <br/>
-                        <label>Role:</label>
-                        <br/>
-                        <input type="text" value={role} onChange={(e) => setRole(e.target.value)}/>
-                        <br/>
-                        <button className='button' onClick={() => setShowCreate(false)}>Close</button>
-                        <button className="button" type="submit">Create User</button>
-                    </form>
-                )}
-                <Outlet/>
-                {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create User</button>)}
-                <div className="table-container">
-                    <table table className="table">
-                        <thead>
-                            <tr>
-                                {Object.getOwnPropertyNames(users[0]).map((props) => {
-                                    return (<th key={props}>{props.toUpperCase().replace(/_/g, " ")}</th>)
-                                })}
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((props) => {
-                                return(
-                                    <tr key = {props.id}>
-                                        <td>{props.id}</td>
-                                        <td>{props.name}</td>
-                                        <td>{props.email}</td>
-                                        <td>{props.role}</td>
-                                        <td>{props.created}</td>
-                                        <td>{props.updated}</td>
-                                        <td>{props.last_login}</td>
-                                        <td>
-                                            <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
-                                            <button className='button' onClick={() => showUser(props.id)}>Show</button>
-                                            <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
+                <div className="all-forms">
+                    {showForm && (
+                        <form className="edit-form" onSubmit={handleEdit}>
+                            <h1>Editing User ID <span>{selectedId}</span></h1>
+
+                            <label>Name:</label>
+                            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                            <label>Email:</label>
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <label>Password:</label>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <label>Role:</label>
+                            <div className="edit-gr">
+                                <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
+                            </div>
+                            <div className="edit-buttons">
+                                <button className="edit-save" type="submit">Save</button>
+                                <button className="edit-close" onClick={() => setShowForm(false)}>X</button>
+                            </div>
+                            
+
+                        </form>
+                    )}
+                    {showCreate && (
+                        <form className="create-form" onSubmit={handleCreateUser}>
+                            <h1>Creating a new User</h1>
+                            <label>Name:</label>
+                            <br/>
+                            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                            <br/>
+                            <label>Email:</label>
+                            <br/>
+                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <br/>
+                            <label>Password:</label>
+                            <br/>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <br/>
+                            <label>Confirm Password:</label>
+                            <br/>
+                            <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                            <br/>
+                            <label>Role:</label>
+                            <br/>
+                            <input type="text" value={role} onChange={(e) => setRole(e.target.value)}/>
+                            <br/>
+                            <div className="create-buttons">
+                                <button className="create-create" type="submit">Create User</button>
+                                <button className='create-close' onClick={() => setShowCreate(false)}>X</button>
+                            </div>      
+                        </form>
+                    )}
                 </div>
                 
-                {(
-                    <div className="donations">
-                        <h1>Update the DONATIONS Button:</h1>
-                        <p>(!) This will change where <span><a href="/donate">the donation page</a></span> button takes a user when pressed.
-                            <br/>Links are formatted as: http://example.com, ensure http:// or https:// is included.
-                        </p>
-                        <form className="donations-form" onSubmit={updateDonateLink}>
-                            <input type="url" value={ donateLink } onChange={(e) => setDonateLink(e.target.value)}></input>
-                            <button type="submit" className="button">Save</button>
-                            <h2>Current Link: <span><a>{ oldDonate }</a></span></h2>
-                        </form>
+                    <Outlet/>
+                    {!showCreate && !showForm && (<button className='create-user-button' onClick={() => handleCreateClick()}>Create User</button>)}
+                    <div className="table-container">
+                        <table table className="table">
+                            <thead>
+                                <tr>
+                                    {Object.getOwnPropertyNames(users[0]).map((props) => {
+                                        return (<th key={props}>{props.toUpperCase().replace(/_/g, " ")}</th>)
+                                    })}
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map((props) => {
+                                    return(
+                                        <tr key = {props.id}>
+                                            <td>{props.id}</td>
+                                            <td>{props.name}</td>
+                                            <td>{props.email}</td>
+                                            <td>{props.role}</td>
+                                            <td>{props.created}</td>
+                                            <td>{props.updated}</td>
+                                            <td>{props.last_login}</td>
+                                            <td>
+                                                <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
+                                                <button className='button' onClick={() => showUser(props.id)}>Show</button>
+                                                <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
                     </div>
+                
+                {(
+                <div className="donations">
+                    <h1>Update the DONATIONS Button:</h1>
+                    <p>(!) This will change where <span><a href="/donate">the donation page</a></span> button takes a user when pressed.
+                        <br/>Links are formatted as: http://example.com, ensure http:// or https:// is included.
+                    </p>
+                    <form className="donations-form" onSubmit={updateDonateLink}>
+                        <input type="url" value={ donateLink } onChange={(e) => setDonateLink(e.target.value)}></input>
+                        <button type="submit" className="button">Save</button>
+                        <h2>Current Link: <span><a>{ oldDonate }</a></span></h2>
+                    </form>
+                </div>
                 )}
 
                 <button onClick = {handleLogout} className="button">Logout</button>

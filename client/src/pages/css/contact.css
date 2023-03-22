@@ -36,10 +36,17 @@
     margin-top: 40px;
 
 }
+.contact-main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
+    width: 100%;
+}
 .contact-card {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     background-color: #d7e8ef;
     border-radius: 20px;
