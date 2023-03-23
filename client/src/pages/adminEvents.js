@@ -2,6 +2,8 @@ import { useAuth } from './../Auth/AuthContext'
 import { Outlet, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 
+import AdminBar from './components/adminBar'
+
 const AdminEvents = () => {
     const auth = useAuth()
     const navigate = useNavigate()
@@ -36,6 +38,20 @@ const AdminEvents = () => {
         }
         handleAdmin()
     }, [])
+
+    const deleteEvent = (Id)=>{
+        fetch(`http://localhost:3002/api/events/delete/${Id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            console.log(response)
+            alert("Event Deleted")
+            window.location.reload()
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
     const handleEditClick = (props) => {
         setSelectedId(props.Id)
@@ -99,6 +115,7 @@ const AdminEvents = () => {
         if (response.status === 200) {
           alert("Row Updated")
           console.log(image)
+          window.location.reload()
         } else {
           console.log("Error")
         }
@@ -108,6 +125,7 @@ const AdminEvents = () => {
 
     return(
         <div>
+            <AdminBar/>
             {showForm && (
                     <form onSubmit={handleEdit}>
                         <label>Title:</label>
@@ -164,7 +182,7 @@ const AdminEvents = () => {
                         <button className="button" type="submit">Create User</button>
                     </form>
                 )}
-            {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create User</button>)}
+            {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create Event</button>)}
             <div className="table-container">
             <table table className="table">
                 <thead>
@@ -187,10 +205,10 @@ const AdminEvents = () => {
                                 <td>{props.Date}</td>
                                 <td>{props.Description}</td>
                                 <td>{props.Location}</td>
-                                <td><img src = {props.Image} alt = {props.Image}/></td>
+                                <td><img className = 'image is-32x32' src={require(`../images/${props.Image}`)} alt="Image"/></td>
                                 <td>{props.Action}</td>
                                 <td>
-                                    <button className='button' >Delete</button>
+                                    <button className='button' onClick={() => deleteEvent(props.Id)} >Delete</button>
                                     <button className='button'>Show</button>
                                     <button className='button' onClick={() => handleEditClick(props)} >Edit</button>
                                 </td>

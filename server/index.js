@@ -88,6 +88,19 @@ app.get("/api/events/get", (req,res)=>{
     })  
 })
 
+app.delete('/api/events/delete/:Id', (req, res) => {
+    const id = req.params.Id
+    console.log(id)
+    db.query("DELETE FROM events WHERE Id = ?", id, (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting user')
+        }
+            res.send(result)
+    })
+})
+
+
 // Query to create an event an add it to the event table and uploads the image
 app.post('/api/events/create', upload.single('Image'), (req, res) => {
     console.log("event created")

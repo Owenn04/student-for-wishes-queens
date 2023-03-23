@@ -1,6 +1,9 @@
 import { useAuth } from './../Auth/AuthContext'
 import { Outlet, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
+
+import AdminBar from './components/adminBar'
+
 import "./css/admin.css"
 
 const Admin = () => {
@@ -123,7 +126,7 @@ const Admin = () => {
     if (users != null && users.length > 0){
         return(
             <div>
-                
+                <AdminBar/>
                 <div className="all-forms">
                     {showForm && (
                         <form className="edit-form" onSubmit={handleEdit}>
