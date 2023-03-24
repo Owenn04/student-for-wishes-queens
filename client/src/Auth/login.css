@@ -142,9 +142,7 @@
     filter: drop-shadow(0px 0px 10px rgba(26, 25, 25, 0.30));
 
     color: #373c3f;
-    transition: 400ms ease;
-
-    font-size: 22px;
+    transition: 200ms ease;
 
     outline-color: #171819;
     outline-width: 2px;

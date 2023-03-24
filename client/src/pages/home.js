@@ -49,8 +49,11 @@ const Home = () => {
         </div>
 
         <div className="home-textbox">
-          <h1>BOX FOR TEXT</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat.</p>
+          <h1>WHO ARE WE?</h1>
+          <p>
+            Students for Wishes Queen’s University strives to raise money and awareness in the Kingston and Queen’s community to help create life-changing wishes for children with critical illnesses. 
+            Help us in reaching our goals and supporting the children in the community by getting involved in our events or donating today!
+          </p>
         </div>
 
         <h1 className="people">

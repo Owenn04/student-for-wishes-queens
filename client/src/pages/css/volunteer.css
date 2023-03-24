@@ -7,12 +7,14 @@
 .volunteer-banner {
     width: 100%;
     height: 300px;
-    background: url(../assets/placeholder1.jpg);
-    background-position-x: 0px;
-    background-position-y: 50%;
+
+    background: url(../assets/IMG_1069.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 2000px rgba(24, 58, 111, 0.3);
+
+    box-shadow: inset 0 0 0 2000px rgba(17, 68, 150, 0.514);
     display: flex;  
     flex-direction: column;
 }

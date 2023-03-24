@@ -84,11 +84,11 @@ const About = () => {
           <a>
             <h1>ABOUT US</h1>
           </a>
-      </div>
+        </div>
 
         <div className="home-textbox">
           <h1>WHAT DO WE DO?</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat.</p>
+          <p>Students for Wishes is the Queen’s University student-run Kingston branch of Make-A-Wish Eastern Ontario. Our goal is to grant the wishes of local Kingston children between the ages of 3 to 17 with critical medical conditions in order to fill their lives with hope, strength, and joy. Our branch strives to promote awareness of the foundation within the Kingston community by hosting events to help raise funds for granting wishes. We focus tremendously on creating great connections between Queen’s students and the Kingston community.</p>
         </div>
 
         <h1 className="people-ab">
@@ -116,17 +116,15 @@ const About = () => {
     )} else {
       return (
       <div className='home'>
-        <div className="home-banner">
-        <div className="contact-banner">
+        <div className="about-banner">
           <a>
             <h1>ABOUT US</h1>
           </a>
-      </div>
         </div>
 
         <div className="home-textbox">
           <h1>WHAT DO ME DO?</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend. Diam donec adipiscing tristique risus. Tellus pellentesque eu tincidunt tortor aliquam. Nec feugiat nisl pretium fusce id. Sagittis purus sit amet volutpat consequat. Mollis nunc sed id semper risus in hendrerit gravida rutrum. Etiam erat velit scelerisque in dictum non consectetur a erat.</p>
+          <p>Students for Wishes is the Queen’s University student-run Kingston branch of Make-A-Wish Eastern Ontario. Our goal is to grant the wishes of local Kingston children between the ages of 3 to 17 with critical medical conditions in order to fill their lives with hope, strength, and joy. Our branch strives to promote awareness of the foundation within the Kingston community by hosting events to help raise funds for granting wishes. We focus tremendously on creating great connections between Queen’s students and the Kingston community.</p>
         </div>
 
         <div>

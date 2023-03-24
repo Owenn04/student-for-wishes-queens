@@ -4,15 +4,16 @@
 
 .home-banner {
     width: 100%;
-    height: 30vw;
+    height: 25vw;
     min-height: 475px;
 
-    background: url(../assets/placeholder1.jpg);
-    background-position-x: 0px;
-    background-position-y: -350px;
-    background-size: 4/3;
-    background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 2000px rgba(24, 58, 111, 0.3);
+    background: url(../assets/IMG_8465.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    box-shadow: inset 0 0 0 2000px rgba(24, 57, 111, 0.795);
     display: flex;  
     flex-direction: column;
 }
