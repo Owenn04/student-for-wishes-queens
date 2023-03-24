@@ -1,6 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
+const fs = require('fs');
 
 
 const db = require('./config/db')
@@ -84,7 +85,6 @@ app.get("/api/events/get", (req,res)=>{
             res.status(500).send("Error getting events")
         }
         res.send(result)
-        console.log(result)
     })  
 })
 
@@ -108,7 +108,7 @@ app.post('/api/events/create', upload.single('Image'), (req, res) => {
     const title = req.body.Title
     const date = req.body.Date
     const description = req.body.Description
-    const image = req.file ? req.file.filename : ''
+    const image = req.file.filename
     const location = req.body.Location
     console.log(image)
 
@@ -213,9 +213,10 @@ app.put('/api/users/put/:id', (req, res) => {
     })
 })
 
-//Query to update event (not fully working a the moment)
+//Query to update event and get path of old image and delete it
+
 app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) => {
-    
+
     const id = req.params.id
     console.log(id)
 
@@ -223,17 +224,36 @@ app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) =>
     const date = req.body.date
     const description = req.body.description
     const location = req.body.location
-    const image = req.file
+    const image = req.file.filename
 
-    // MySQL query to insert the data into the database
-    db.query("UPDATE events SET Title = ?, Date = ?, Description = ?, Location = ?, Image = ? WHERE Id = ?", [title, date, description, location, image, id], (err, result) => {
+    
+    db.query("SELECT Image FROM events WHERE Id = ?", [id], (err, result) => {
         if(err) {
             console.log(err)
-            res.status(500).send('Error Updating Event')
+            res.status(500).send('Error Retrieving Event Image Path')
+        } else {
+            // Delete the previous image file
+            const prevImagePath = `../client/src/images/${result[0].Image}`
+            fs.unlink(prevImagePath, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(`Previous image file ${prevImagePath} was deleted successfully.`)
+                }
+            })
+            
+            db.query("UPDATE events SET Title = ?, Date = ?, Description = ?, Location = ?, Image = ? WHERE Id = ?", [title, date, description, location, image, id], (err, result) => {
+                if(err) {
+                    console.log(err)
+                    res.status(500).send('Error Updating Event')
+                } else {
+                    res.send(result)
+                }
+            })
         }
-            res.send(result)
     })
 })
+
 
 
 
