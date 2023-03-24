@@ -61,7 +61,7 @@ const AdminEvents = () => {
         setDate(props.Date)
         setDescription(props.Description)
         setLocation(props.Location)
-        setLink(props.link)
+        setLink(props.Link)
         setImage(props.Image)
         setShowForm(true)
       }
@@ -133,16 +133,22 @@ const AdminEvents = () => {
         <div>
             <AdminBar/>
             {showForm && (
-                    <form onSubmit={handleEdit}>
+                    <form className="event-form" onSubmit={handleEdit}>
+                        <h1>Editing Event: <span>{title}</span></h1>
                         <label>Title:</label>
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
                         <label>Date:</label>
                         <input type="text" value={date} onChange={(e) => setDate(e.target.value)} />
                         <label>Desciption:</label>
-                        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <textarea type="text" rows="5" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <label>Location:</label>
                         <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
                         <label>Link:</label>
+                        <p>
+                            Required Format for links: https://www.example.com 
+                            <br/> 
+                            'https://' is required, 'www.' is not.
+                        </p>
                         <input type="url" value={link} onChange={(e) => setLink(e.target.value)} />
                         
                         <label>Image:</label>
@@ -155,14 +161,17 @@ const AdminEvents = () => {
                                 setImage(image)
                             }}
                         />
+                        <div className="event-buttons">
+                            <button className="event-save" type="submit">Save</button>
+                            <button className="event-close" onClick={() => setShowForm(false)}>X</button>
+                        </div>
                         
-                        <button type="submit">Save</button>
-                        <button onClick={() => setShowForm(false)}>x</button>
                     </form>
             )}
 
             {showCreate && (
-                    <form onSubmit={handleCreateUser}>
+                    <form className="event-form" onSubmit={handleCreateUser}>
+                        <h1><span>Creating a new event</span></h1>
                         <label>Title:</label>
                         <br/>
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
@@ -173,13 +182,18 @@ const AdminEvents = () => {
                         <br/>
                         <label>Description:</label>
                         <br/>
-                        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                        <textarea type="text" className="event-form-des" rows="5" value={description} onChange={(e) => setDescription(e.target.value)}/>
                         <br/>
                         <label>Location:</label>
                         <br/>
                         <input type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
                         <br/>
                         <label>Link:</label>
+                        <p>
+                            Required Format for links: https://www.example.com 
+                            <br/> 
+                            'https://' is required, 'www.' is not.
+                        </p>
                         <br/>
                         <input type="url" value={link} onChange={(e) => setLink(e.target.value)}/>
                         <br/>
@@ -190,11 +204,14 @@ const AdminEvents = () => {
                                 setImage(image)
                                 }}/>
                         <br/>
-                        <button className='button' onClick={() => setShowCreate(false)}>Close</button>
-                        <button className="button" type="submit">Create Event</button>
+                        <div className="event-buttons">
+                            <button className="event-save" type="submit">Create Event</button>
+                            <button className='event-close' onClick={() => setShowCreate(false)}>X</button>
+                        </div>
+                        
                     </form>
                 )}
-            {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create Event</button>)}
+            {!showCreate && !showForm && (<button className='create-event-button' onClick={() => handleCreateClick()}>Create Event</button>)}
             <div className="table-container">
             <table table className="table">
                 <thead>
@@ -212,7 +229,7 @@ const AdminEvents = () => {
                 <tbody>
                     {events.map((props) => {
                         return(
-                            <tr className="table" key = {props.Id}>
+                            <tr className="event-table" key = {props.Id}>
                                 <td>{props.Id}</td>
                                 <td>{props.Title}</td>
                                 <td>{props.Date}</td>
@@ -232,7 +249,7 @@ const AdminEvents = () => {
                 </tbody>
             </table>
         </div>
-        <button onClick = {handleLogout} className="button">Logout</button>
+        {/* <button onClick = {handleLogout} className="button">Logout</button> */}
         <div className="spacer"></div>
         </div>
         
