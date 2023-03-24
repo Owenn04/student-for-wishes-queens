@@ -254,10 +254,6 @@ app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) =>
     })
 })
 
-
-
-
-
 // Route to like a post (not used atm)
 app.post('/api/like/:id',(req,res)=>{
 

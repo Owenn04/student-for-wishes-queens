@@ -81,7 +81,7 @@ const Volunteer = () => {
             <div key = {props.Id} className = 'vevent-card-holder'>
               <div className = "vevent-card-main">
                 <div className = "vevent-elements">
-                  <img src={props.Image}></img>
+                  <img src={require(`../images/${props.Image}`)} alt="Image"></img>
                   <div className="vevent-txts">
                     <h1>{props.Title}</h1>
                     <div className = "vevents-txts-sub"><span>Location:</span> {props.Location} -
