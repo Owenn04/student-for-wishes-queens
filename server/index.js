@@ -110,12 +110,13 @@ app.post('/api/events/create', upload.single('Image'), (req, res) => {
     const description = req.body.Description
     const image = req.file.filename
     const location = req.body.Location
+    const link = req.body.Link
     console.log(image)
 
     // right now its capitalzied just like the table but i will change all to lowercase later
     // not sure if i will cuz capitals is used everywhere now :skull:
 
-    db.query("INSERT INTO events (Title, Date, Description, Image, Location) VALUES (?,?,?,?,?)",[title, date, description, image, location], (err,result)=>{
+    db.query("INSERT INTO events (Title, Date, Description, Image, Location, Link) VALUES (?,?,?,?,?,?)",[title, date, description, image, location, link], (err,result)=>{
         if (err) {
             console.error(err)
             res.status(500).send('Internal server error')
@@ -225,6 +226,7 @@ app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) =>
     const description = req.body.description
     const location = req.body.location
     const image = req.file.filename
+    const link = req.body.link
 
     
     db.query("SELECT Image FROM events WHERE Id = ?", [id], (err, result) => {
@@ -242,7 +244,7 @@ app.put('/api/events/put/:id', upload.single('image'), async (req, res, next) =>
                 }
             })
             
-            db.query("UPDATE events SET Title = ?, Date = ?, Description = ?, Location = ?, Image = ? WHERE Id = ?", [title, date, description, location, image, id], (err, result) => {
+            db.query("UPDATE events SET Title = ?, Date = ?, Description = ?, Location = ?, Image = ?, Link = ? WHERE Id = ?", [title, date, description, location, image, link, id], (err, result) => {
                 if(err) {
                     console.log(err)
                     res.status(500).send('Error Updating Event')

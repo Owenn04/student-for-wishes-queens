@@ -1,6 +1,7 @@
 import { useAuth } from './../Auth/AuthContext'
 import { Outlet, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
+import "./css/adminEvents.css"
 
 import AdminBar from './components/adminBar'
 
@@ -24,6 +25,7 @@ const AdminEvents = () => {
     const [title, setTitle] = useState("")
     const [date, setDate] = useState("")
     const [description, setDescription] = useState("")
+    const [link, setLink] = useState("")
     const [location, setLocation] = useState("")
     const [image, setImage] = useState(null)
 
@@ -59,6 +61,7 @@ const AdminEvents = () => {
         setDate(props.Date)
         setDescription(props.Description)
         setLocation(props.Location)
+        setLink(props.link)
         setImage(props.Image)
         setShowForm(true)
       }
@@ -68,6 +71,7 @@ const AdminEvents = () => {
         setDate('')
         setDescription('')
         setLocation('')
+        setLink('')
         setImage(null)
         setShowCreate(true)
     }
@@ -81,6 +85,7 @@ const AdminEvents = () => {
         formData.append("date", date)
         formData.append("description", description)
         formData.append("location", location)
+        formData.append("Link", link)
         formData.append("image", image)
         //Must pass 'formData' as the body as Json does not work with files.
 
@@ -105,6 +110,7 @@ const AdminEvents = () => {
         formData.append("Date", date)
         formData.append("Description", description)
         formData.append("Location", location)
+        formData.append("Link", link)
         formData.append("Image", image)
 
         const response = await fetch("http://localhost:3002/api/events/create",{
@@ -136,6 +142,8 @@ const AdminEvents = () => {
                         <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <label>Location:</label>
                         <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+                        <label>Link:</label>
+                        <input type="url" value={link} onChange={(e) => setLink(e.target.value)} />
                         
                         <label>Image:</label>
                         <input
@@ -171,6 +179,10 @@ const AdminEvents = () => {
                         <br/>
                         <input type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
                         <br/>
+                        <label>Link:</label>
+                        <br/>
+                        <input type="url" value={link} onChange={(e) => setLink(e.target.value)}/>
+                        <br/>
                         <label>Image:</label>
                         <br/>
                         <input type="file" id="file" accept=".jpg" onChange={e => {
@@ -179,7 +191,7 @@ const AdminEvents = () => {
                                 }}/>
                         <br/>
                         <button className='button' onClick={() => setShowCreate(false)}>Close</button>
-                        <button className="button" type="submit">Create User</button>
+                        <button className="button" type="submit">Create Event</button>
                     </form>
                 )}
             {!showCreate && !showForm && (<button className='button' onClick={() => handleCreateClick()}>Create Event</button>)}
@@ -192,6 +204,7 @@ const AdminEvents = () => {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Location</th>
+                        <th>Link</th>
                         <th>Image</th>
                         <th>ACTIONS</th>
                     </tr>
@@ -199,12 +212,13 @@ const AdminEvents = () => {
                 <tbody>
                     {events.map((props) => {
                         return(
-                            <tr key = {props.Id}>
+                            <tr className="table" key = {props.Id}>
                                 <td>{props.Id}</td>
                                 <td>{props.Title}</td>
                                 <td>{props.Date}</td>
-                                <td>{props.Description}</td>
+                                <td className="description">{props.Description}</td>
                                 <td>{props.Location}</td>
+                                <td className="link"><a>{props.Link}</a></td>
                                 <td><img className = 'image is-32x32' src={require(`../images/${props.Image}`)} alt="Image"/></td>
                                 <td>{props.Action}</td>
                                 <td>

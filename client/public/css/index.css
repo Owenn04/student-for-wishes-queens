@@ -41,6 +41,7 @@ GRAY: #747678
     background-color: rgb(29, 29, 29);
     bottom: 0;
     padding: 0.5% 10px;
+    z-index: 69;
 }
 .footer-inner {
     display: flex;

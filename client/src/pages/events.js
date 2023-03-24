@@ -45,7 +45,7 @@ const Events = () => {
                     <p>{props.Description}</p>
 
                     <div className="event-button">
-                      <a href={props.link} target="_blank">
+                      <a href={props.Link} target="_blank">
                         <button>REGISTER</button>
                       </a>
                     </div>
