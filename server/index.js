@@ -39,7 +39,14 @@ app.get("/api/staff/get", (req,res)=>{
         res.send(result)
     });
 });
-
+app.get("/api/staff/limit", (req,res)=>{
+    db.query("SELECT * FROM staff LIMIT 5", (err,result)=>{
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    });
+});
 // Add staff to db
 
 app.post('/api/staff/create', (req, res) => {

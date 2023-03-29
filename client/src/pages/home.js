@@ -3,38 +3,16 @@ import React, { useState, useEffect } from "react"
 
 const Home = () => {
 
-  const [people, setPeople] = useState([
-    { // NOTE: Used chatgpt to generate some placeholder people
-      name: "Sarah Davis",
-      role: "President",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      blurb: "A visionary leader with a passion for empowering marginalized communities."
-    },
-    {
-      name: "Jordan Patel",
-      role: "Vice-President",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      blurb: "A dedicated and experienced executive with a strong commitment to making a positive impact on the world."
-    },
-    {
-      name: "Lauren Nguyen",
-      role: "Events",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-      blurb: "A master of operations with a talent for optimizing processes and systems."
-    },
-    {
-      name: "Michael Thompson",
-      role: "Marketing",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      blurb: "A creative and innovative marketer with a talent for building brand awareness and engagement. "
-    },
-    {
-      name: "James Carter",
-      role: "Finance",
-      image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-      blurb: "A highly analytical and strategic thinker with a track record of driving financial success."
-    },
-  ])
+  useEffect(() => {
+    const handleAdmin = async () =>{
+      const staff = await fetch("http://localhost:3002/api/staff/limit")
+      const people_returned = await staff.json()
+      await setPeople(people_returned)
+      console.log(people_returned);
+    }
+    handleAdmin()
+  }, [])
+  const [people, setPeople] = useState([])
 
   if (people != null && people.length > 0) {
     return (
@@ -60,18 +38,18 @@ const Home = () => {
           PEOPLE
         </h1>
 
-        <div className="card-holder">
-        {people.map((props) => {
-          return (
-            <div className="card-main">
-              <img src={props.image} ></img>
-              <div className="card-txts">
-                <h1>{props.name} | <span>{props.role}</span></h1>
-                <p>{props.blurb}</p>
-              </div>
-            </div>
-          )
-        })}
+        <div className="card-holder-ab">
+          {people.map((props) => {
+            return (
+                <div className="card-main-ab">
+                  <img src={props.Image} ></img>
+                  <div className="card-txts-ab">
+                    <h1>{props.Name} | <span>{props.Job}</span></h1>
+                    <p>{props.Bio}</p>
+                  </div>
+                </div>
+            )
+          })}
         </div>
 
         <a href="about">
