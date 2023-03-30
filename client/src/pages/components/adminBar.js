@@ -6,7 +6,7 @@ const AdminBar = () =>{
                 <div class="navbar-start">
                     <a href = "/admin" className = 'navbar-item'>Users</a>
                     <a href = "/admin/events" className = 'navbar-item'>Events</a>
-                    <a href = "/admin" className = 'navbar-item'>Staff</a>
+                    <a href = "/admin/staff" className = 'navbar-item'>Staff</a>
                 </div>  
         </nav>
     )

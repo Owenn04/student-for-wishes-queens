@@ -47,24 +47,80 @@ app.get("/api/staff/limit", (req,res)=>{
         res.send(result)
     });
 });
-// Add staff to db
 
-app.post('/api/staff/create', (req, res) => {
-    console.log("data create for mailing")
+//Query to create a staff member
+app.post('/api/staff/create', upload.single('image'), (req, res) => {
+    console.log("staff created")
+    //const id = req.body.Id
     const name = req.body.name
-    const job = req.body.job;
-    const bio = req.body.bio;
-    const image = req.body.image;
+    const job = req.body.job
+    const bio= req.body.bio
+    const image = req.file.filename
 
-    db.query("INSERT INTO staff (Name, Job, Bio, Image) VALUES (?, ?)", [name, job, bio, image], (err, result) => {
+    db.query("INSERT INTO staff (name, job, bio, image) VALUES (?,?,?,?)",[name, job, bio, image], (err,result)=>{
         if (err) {
-            console.error(err);
-            res.status(500).send('Internal server error');
-            return;
+            console.error(err)
+            res.status(500).send('Internal server error')
+            return
         }
-        res.status(200).send('Data inserted successfully');
+        res.status(200).send('Data inserted successfully')
+    }) 
+})
+
+//Query to delete staff member
+app.delete('/api/staff/delete/:Id', (req, res) => {
+    const id = req.params.id
+    console.log(id)
+    db.query("DELETE FROM events WHERE id = ?", id, (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting staff')
+        }
+            res.send(result)
     })
 })
+
+//Query to update staff and get path of old image and delete it
+
+app.put('/api/staff/put/:id', upload.single('image'), async (req, res, next) => {
+
+    const id = req.params.id
+    console.log(id)
+
+    const name = req.body.name
+    const job = req.body.job
+    const bio = req.body.bio
+    const image = req.file.filename
+
+
+    
+    db.query("SELECT image FROM staff WHERE id = ?", [id], (err, result) => {
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error Retrieving Staff Image Path')
+        } else {
+            // Delete the previous image file (might be caps)
+            const prevImagePath = `../client/src/images/${result[0].image}`
+            fs.unlink(prevImagePath, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(`Previous image file ${prevImagePath} was deleted successfully.`)
+                }
+            })
+            
+            db.query("UPDATE staff SET name = ?, job = ?, bio = ?, image = ? WHERE id = ?", [name, job, bio, image, id], (err, result) => {
+                if(err) {
+                    console.log(err)
+                    res.status(500).send('Error Updating staff member')
+                } else {
+                    res.send(result)
+                }
+            })
+        }
+    })
+})
+
 
 // Query for sending name and email to mailing table
 app.post('/api/mailing/create', (req, res) => {
@@ -130,9 +186,9 @@ app.post('/api/events/create', upload.single('Image'), (req, res) => {
             return
         }
         res.status(200).send('Data inserted successfully')
-    })
-    
+    }) 
 })
+
 
 //Query to check if password entered is the same as the one in the db.
 app.post('/api/users/post', (req, res) => {

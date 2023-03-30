@@ -155,7 +155,7 @@ const AdminEvents = () => {
                         <input
                             type="file"
                             id="file"
-                            accept=".jpg"
+                            accept=".jpg,.png,.jpeg,.JPG"
                             onChange={e => {
                                 const image = e.target.files[0]
                                 setImage(image)
@@ -199,7 +199,7 @@ const AdminEvents = () => {
                         <br/>
                         <label>Image:</label>
                         <br/>
-                        <input type="file" id="file" accept=".jpg" onChange={e => {
+                        <input type="file" id="file" accept=".jpg,.png,.jpeg,.JPG" onChange={e => {
                                 const image = e.target.files[0]
                                 setImage(image)
                                 }}/>
