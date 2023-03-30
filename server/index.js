@@ -68,10 +68,10 @@ app.post('/api/staff/create', upload.single('image'), (req, res) => {
 })
 
 //Query to delete staff member
-app.delete('/api/staff/delete/:Id', (req, res) => {
+app.delete('/api/staff/delete/:id', (req, res) => {
     const id = req.params.id
     console.log(id)
-    db.query("DELETE FROM events WHERE id = ?", id, (err, result)=>{
+    db.query("DELETE FROM staff WHERE id = ?", id, (err, result)=>{
         if(err) {
             console.log(err)
             res.status(500).send('Error deleting staff')
