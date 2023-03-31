@@ -41,7 +41,7 @@ function App() {
       </div>
 
       <div className='header'>
-        <a href = "/home"><img src="./sfwq-white.png"/></a>
+        <a href = "/home"><img src={require(`./sfwq-white.png`)}/></a>
       </div>
 
       <AuthProvider>
