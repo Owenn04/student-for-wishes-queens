@@ -71,11 +71,6 @@
     margin-bottom: 10px;
 }
 
-.contact-card:hover h1 {
-    font-size: 6vh;
-    transition: 400ms ease;
-}
-
 .contact-card img {
     margin: 0;
 
@@ -92,7 +87,7 @@
     text-align: left;
 
     font-family: FuturaPTBold;
-    font-size: 5vh;
+    font-size: 3vh;
 
     margin-left: 20px;
     margin-right: 20px;
@@ -101,6 +96,11 @@
     color: #2d2f2f;
 
     transition: 300ms ease;
+}
+
+.contact-card:hover h1 {
+    font-size: 4vh;
+    transition: 400ms ease;
 }
 
 .spacer {
