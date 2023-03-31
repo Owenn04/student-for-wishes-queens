@@ -18,6 +18,7 @@ import Login from './Auth/login';
 import Admin from './pages/admin';
 import AdminEvents from './pages/adminEvents'
 import AdminStaff from './pages/adminStaff'
+import AdminConnect from './pages/adminConnect'
 
 import UserInfo from './pages/userInfo';
 import PrivateRoute from './Auth/PrivateRoute'
@@ -59,7 +60,7 @@ function App() {
             <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>}>
               <Route path='staff' element = {<AdminStaff/>}/>
               <Route path="events" element={<AdminEvents />} />
-              
+              <Route path="connect" element={<AdminConnect />} />
               <Route path=":id" element={<UserInfo />} />
       
             </Route>

@@ -40,7 +40,7 @@ app.get("/api/staff/get", (req,res)=>{
     });
 });
 app.get("/api/staff/limit", (req,res)=>{
-    db.query("SELECT * FROM staff LIMIT 5", (err,result)=>{
+    db.query("SELECT * FROM staff LIMIT 6", (err,result)=>{
         if(err) {
             console.log(err)
         }
@@ -366,5 +366,78 @@ app.put('/api/donation/put', (req, res) => {
             res.status(500).send('Error deleting user')
         }
             res.send(result)
+    })
+})
+
+app.get("/api/connect/get", (req,res)=>{
+    db.query("SELECT * FROM connect", (err,result)=>{
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    });
+});
+
+app.post('/api/connect/create', upload.single('image'), (req, res) => {
+    console.log("connect created")
+    const title = req.body.title
+    const link = req.body.link
+    const image = req.file.filename
+
+    db.query("INSERT INTO connect (title, link, image) VALUES (?,?,?)",[title, link, image], (err,result)=>{
+        if (err) {
+            console.error(err)
+            res.status(500).send('Internal server error')
+            return
+        }
+        res.status(200).send('Data inserted successfully')
+    }) 
+})
+
+app.delete('/api/connect/delete/:id', (req, res) => {
+    const id = req.params.id
+    console.log(id)
+    db.query("DELETE FROM connect WHERE id = ?", id, (err, result)=>{
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error deleting connect')
+        }
+            res.send(result)
+    })
+})
+
+app.put('/api/connect/put/:id', upload.single('image'), async (req, res, next) => {
+
+    const id = req.params.id
+    console.log(id)
+
+    const title = req.body.title
+    const link = req.body.link
+    const image = req.body.image
+    
+    db.query("SELECT image FROM connect WHERE id = ?", [id], (err, result) => {
+        if(err) {
+            console.log(err)
+            res.status(500).send('Error Retrieving Connect Image Path')
+        } else {
+            // Delete the previous image file (might be caps)
+            // const prevImagePath = `../client/src/images/${result[0].image}`
+            // fs.unlink(prevImagePath, (err) => {
+            //     if (err) {
+            //         console.log(err)
+            //     } else {
+            //         console.log(`Previous image file ${prevImagePath} was deleted successfully.`)
+            //     }
+            // })
+            
+            db.query("UPDATE connect SET title = ?, link = ?, image = ? WHERE id = ?", [title, link, image, id], (err, result) => {
+                if(err) {
+                    console.log(err)
+                    res.status(500).send('Error Updating connect tile')
+                } else {
+                    res.send(result)
+                }
+            })
+        }
     })
 })

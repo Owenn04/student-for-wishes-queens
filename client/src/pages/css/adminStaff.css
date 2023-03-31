@@ -1,0 +1,145 @@
+.staff-table {
+    width: 80vw;
+}
+.staff-table td {
+    max-width: 20vw;
+}
+.link {
+    max-width: 10vw;
+}
+
+.create-staff-button {
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+    
+    width: 125px;
+    height: 35px;
+
+    transform: translateX(-29vw);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.create-staff-button:hover {
+    border-color: rgb(219, 219, 255);
+    background-color: rgb(250, 250, 255);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
+}
+
+.staff-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: 20vw;
+
+    background-color: rgb(250, 254, 255);
+    border-color: rgb(219, 250, 255);
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.staff-form label {
+    text-align: left;
+    margin: 0 0 auto;
+    margin-bottom: 2px;
+    margin-top: 10px;
+    font-family: FuturaPT;
+}
+.staff-form input {
+    padding: 2px;
+    max-width: 100%;
+}
+.staff-form textarea {
+    font-size: 12px;
+    padding: 2px;
+    resize: none;
+}
+
+.staff-form-des {
+    padding: 2px;
+    max-width: 100%;
+}
+
+.staff-form h1{
+    font-family: FuturaPT;
+    font-size: 20px;
+}
+.staff-form h1 span{
+    font-family: FuturaPTBold;
+    font-size: 20px;
+}
+.staff-form p {
+    font-family: FuturaPT;
+    text-align: left;
+    margin-bottom: 4px;
+}
+
+.staff-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.staff-save {
+    width: 16vw;
+    margin-right: 1vw;
+
+    background-color: rgb(250, 254, 255);
+    color: rgb(85,85,85);
+    font-size: 20px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+}
+.staff-save:hover {
+    border-color: rgb(219, 255, 220);
+    background-color: rgb(250, 255, 251);
+    color:rgb(6, 36, 6);
+    transition: 200ms ease;
+}
+
+.staff-close {
+    aspect-ratio: 1/1;
+    width: 3vw;
+
+    background-color: rgb(250, 254, 255);
+    color:rgb(85, 85, 85);
+    font-size: 24px;
+    
+    border-radius: 6px;
+    border-color: rgb(219, 250, 255);
+    font-family: FuturaPTBold;
+    transition: 200ms ease;
+    
+}
+.staff-close:hover {
+    border-color: rgb(255, 219, 219);
+    background-color: rgb(255, 250, 250);
+    color:rgb(36, 6, 6);
+    transition: 200ms ease;
+}
+
+.staff-gr {
+    flex-grow: 1;
+    padding: 2px;
+    width: 100%;
+}
+.staff-gr input {
+    width: 100%;
+}
