@@ -421,14 +421,14 @@ app.put('/api/connect/put/:id', upload.single('image'), async (req, res, next) =
             res.status(500).send('Error Retrieving Connect Image Path')
         } else {
             // Delete the previous image file (might be caps)
-            // const prevImagePath = `../client/src/images/${result[0].image}`
-            // fs.unlink(prevImagePath, (err) => {
-            //     if (err) {
-            //         console.log(err)
-            //     } else {
-            //         console.log(`Previous image file ${prevImagePath} was deleted successfully.`)
-            //     }
-            // })
+            const prevImagePath = `../client/src/images/${result[0].image}`
+            fs.unlink(prevImagePath, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(`Previous image file ${prevImagePath} was deleted successfully.`)
+                }
+            })
             
             db.query("UPDATE connect SET title = ?, link = ?, image = ? WHERE id = ?", [title, link, image, id], (err, result) => {
                 if(err) {

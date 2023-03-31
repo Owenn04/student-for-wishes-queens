@@ -5,7 +5,7 @@ import './Sidebar.css';
 export default props => {
   return (
     <Menu right>
-        <img src="./sfwq-white.png"/>
+        <img src={require(`./sfwq-white.png`)}/>
 
         <div className="mailing-list">
             <a className="menu-item" href="/mailing">

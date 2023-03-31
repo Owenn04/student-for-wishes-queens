@@ -122,6 +122,11 @@ const AdminConnect= () => {
                         <label>Title:</label>
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
                         <label>Redirect Link:</label>
+                        <p>
+                            Required Format for links: https://www.example.com 
+                            <br/> 
+                            'https://' is required, 'www.' is not.
+                        </p>
                         <input type="url" value={link} onChange={(e) => setLink(e.target.value)} />
                         
                         <label>Image:</label>
@@ -150,6 +155,11 @@ const AdminConnect= () => {
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
                         <br/>
                         <label>Redirect Link:</label>
+                        <p>
+                            Required Format for links: https://www.example.com 
+                            <br/> 
+                            'https://' is required, 'www.' is not.
+                        </p>
                         <br/>
                         <input type="url" value={link} onChange={(e) => setLink(e.target.value)}/>
                         <br/>
