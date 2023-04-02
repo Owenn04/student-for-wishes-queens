@@ -223,6 +223,26 @@ app.post('/api/users/post', (req, res) => {
     })
 })
 
+//Query to create a user
+app.post("/api/users/create", (req, res) =>{
+    console.log("work")
+    const name = req.body.name
+    const email = req.body.email
+    const password = bcrypt.hashSync(req.body.password, saltRounds)
+    const role = req.body.role
+
+
+    db.query("INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)",[name, email, password, role], (err,result)=>{
+        if (err) {
+            console.error(err)
+            res.status(500).send('Internal server error')
+            return
+        }
+        res.status(200).send('Data inserted successfully')
+    }) 
+
+})
+
 //Query to get user data
 app.get("/api/users/get", (req, res) =>{
     db.query("SELECT id, name, email, role, created, updated, last_login FROM users", (err, result) => {
