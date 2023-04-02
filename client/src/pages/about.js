@@ -38,7 +38,7 @@ const About = () => {
           {people.map((props) => {
             return (
                 <div className="card-main-ab">
-                  <img src={require(`../images/${props.image}`)} alt="Image"/>
+                  <img src={require(`../images/${props.image}`)} alt="image"/>
                   <div className="card-txts-ab">
                     <h1>{props.name} | <span>{props.job}</span></h1>
                     <p>{props.bio}</p>

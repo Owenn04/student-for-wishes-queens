@@ -91,6 +91,7 @@ app.put('/api/staff/put/:id', upload.single('image'), async (req, res, next) => 
     const job = req.body.job
     const bio = req.body.bio
     const image = req.file.filename
+    
 
 
     
