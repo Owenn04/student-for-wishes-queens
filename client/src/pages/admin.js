@@ -21,7 +21,6 @@ const Admin = () => {
     //State Values
 
     const [users, setUsers] = useState([])
-    const [showForm, setShowForm] = useState(false)
     const [selectedId, setSelectedId] = useState(null)
 
     const [donateLink, setDonateLink] = useState('')
@@ -32,8 +31,7 @@ const Admin = () => {
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-
-    const [showCreate, setShowCreate] = useState(false)
+    const 
 
     const deleteUser = (id)=>{
         fetch(`http://localhost:3002/api/users/delete/${id}`, {
