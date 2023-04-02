@@ -204,7 +204,6 @@ const AdminStaff= () => {
                                 <td>{props.Action}</td>
                                 <td>
                                     <button className='button' onClick={() => deleteStaff(props.id)}>Delete</button>
-                                    <button className='button'>Show</button>
                                     <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
                                 </td>
                                 </tr>
@@ -213,7 +212,7 @@ const AdminStaff= () => {
                 </tbody>
             </table>
         </div>
-        {/* <button onClick = {handleLogout} className="button">Logout</button> */}
+        <button onClick = {handleLogout} className="button">Logout</button>
         <div className="spacer"></div>
         </div>
     )

@@ -206,7 +206,6 @@ const Admin = () => {
                                             <td>{props.last_login}</td>
                                             <td>
                                                 <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
-                                                <button className='button' onClick={() => showUser(props.id)}>Show</button>
                                                 <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
                                             </td>
                                         </tr>

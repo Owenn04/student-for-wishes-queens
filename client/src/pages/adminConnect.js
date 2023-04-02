@@ -201,7 +201,6 @@ const AdminConnect= () => {
                                 <td>{props.Action}</td>
                                 <td>
                                     <button className='button' onClick={() => deleteTile(props.id)}>Delete</button>
-                                    <button className='button'>Show</button>
                                     <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
                                 </td>
                                 </tr>
@@ -210,7 +209,7 @@ const AdminConnect= () => {
                 </tbody>
             </table>
         </div>
-
+        <button onClick = {handleLogout} className="button">Logout</button>               
         <div className="spacer"></div>
         </div>
     )
