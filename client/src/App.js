@@ -20,7 +20,6 @@ import AdminEvents from './pages/adminEvents'
 import AdminStaff from './pages/adminStaff'
 import AdminConnect from './pages/adminConnect'
 
-import UserInfo from './pages/userInfo';
 import PrivateRoute from './Auth/PrivateRoute'
 import { AuthProvider} from './Auth/AuthContext';
 
