@@ -251,7 +251,7 @@ const Admin = () => {
                         </div>)}
                 </div>
                 
-                    <Outlet/>
+                    
                     {currentFrom == "none" && (<button className='create-user-button' onClick={() => handleCreateClick()}>Create User</button>)}
                     <div className="table-container">
                         <table table className="table">

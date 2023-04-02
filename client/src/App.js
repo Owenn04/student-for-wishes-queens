@@ -57,13 +57,12 @@ function App() {
             <Route path="/mailing" element={<Mailing />} />
             <Route path = "/login" element = {<Login/>}/>
             
-            <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>}>
-              <Route path='staff' element = {<AdminStaff/>}/>
-              <Route path="events" element={<AdminEvents />} />
-              <Route path="connect" element={<AdminConnect />} />
-              <Route path=":id" element={<UserInfo />} />
-      
-            </Route>
+            <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>}/>
+            
+            <Route path="/admin/events" element={<PrivateRoute><AdminEvents /></PrivateRoute>} />
+            <Route path="/admin/connect" element={<PrivateRoute><AdminConnect/></PrivateRoute>} />
+              
+            <Route path='/admin/staff' element = {<PrivateRoute><AdminStaff/></PrivateRoute>}/>
             
           </Routes>
         </Router>

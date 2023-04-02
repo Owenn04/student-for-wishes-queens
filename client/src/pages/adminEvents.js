@@ -131,7 +131,7 @@ const AdminEvents = () => {
 
     return(
         <div>
-            {/* <AdminBar/> */}
+            <AdminBar/>
             {showForm && (
                     <form className="event-form" onSubmit={handleEdit}>
                         <h1>Editing Event: <span>{title}</span></h1>

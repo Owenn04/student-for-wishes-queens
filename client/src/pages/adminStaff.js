@@ -120,7 +120,7 @@ const AdminStaff= () => {
 
     return(
         <div>
-            {/* <AdminBar/> */}
+            <AdminBar/>
             {showForm && (
                     <form className="staff-form" onSubmit={handleEdit}>
                         <h1>Editing Staff: <span>{name}</span></h1>
