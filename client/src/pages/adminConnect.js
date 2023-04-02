@@ -115,7 +115,7 @@ const AdminConnect= () => {
 
     return(
         <div>
-            {/* <AdminBar/> */}
+            <AdminBar/>
             {showForm && (
                     <form className="connect-form" onSubmit={handleEdit}>
                         <h1>Editing Connect Tile: <span>{title}</span></h1>

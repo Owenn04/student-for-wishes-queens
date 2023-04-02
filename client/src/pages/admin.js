@@ -181,7 +181,7 @@ const Admin = () => {
                     )}
                 </div>
                 
-                    <Outlet/>
+                    
                     {!showCreate && !showForm && (<button className='create-user-button' onClick={() => handleCreateClick()}>Create User</button>)}
                     <div className="table-container">
                         <table table className="table">
