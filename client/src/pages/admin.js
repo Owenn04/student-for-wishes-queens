@@ -111,7 +111,7 @@ const Admin = () => {
         const response = await fetch("http://localhost:3002/api/users/create",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, role, password}),
+            body: JSON.stringify({ name, email, role, password, created: new Date().toISOString().substring(0,10)}),
         })
         if (response.status === 200) {
             console.log(donateLink)

@@ -230,9 +230,10 @@ app.post("/api/users/create", (req, res) =>{
     const email = req.body.email
     const password = bcrypt.hashSync(req.body.password, saltRounds)
     const role = req.body.role
+    const created = req.body.created
 
 
-    db.query("INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)",[name, email, password, role], (err,result)=>{
+    db.query("INSERT INTO users (name, email, password, role, created, updated, last_login) VALUES (?,?,?,?,?,?,?)",[name, email, password, role, created, created, created], (err,result)=>{
         if (err) {
             console.error(err)
             res.status(500).send('Internal server error')
