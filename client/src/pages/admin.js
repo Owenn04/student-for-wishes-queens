@@ -14,9 +14,6 @@ const Admin = () => {
         auth.logout()
         navigate("/login")
     }
-    const showUser = (id) => {
-        navigate(`/admin/${id}`)
-    }
 
     //State Values
 
@@ -31,7 +28,10 @@ const Admin = () => {
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const 
+    const [currentFrom, setCurrentForm] = useState('none')
+    const [created, setCreated] = useState('')
+    const [updated, setUpdated] = useState('')
+    const [lastLogin, setLastLogin] = useState('')
 
     const deleteUser = (id)=>{
         fetch(`http://localhost:3002/api/users/delete/${id}`, {
@@ -65,6 +65,8 @@ const Admin = () => {
         }
     }
 
+    
+
     const updateDonateLink = async(e) => {
         e.preventDefault();
         console.log("submitted")
@@ -88,8 +90,19 @@ const Admin = () => {
         setName(props.name)
         setEmail(props.email)
         setRole(props.role)
-        setShowForm(true)
+        setCreated(props.created)
+        setCurrentForm("edit")
+      }
 
+      const handleViewClick = (props) => {
+        setSelectedId(props.id)
+        setName(props.name)
+        setEmail(props.email)
+        setRole(props.role)
+        setCreated(props.created)
+        setUpdated(props.updated)
+        setLastLogin(props.last_login)
+        setCurrentForm("view")
       }
 
       const handleCreateUser = async (e) => {
@@ -101,7 +114,7 @@ const Admin = () => {
         setRole('')
         setPassword('')
         setConfirmPassword('')
-        setShowCreate(true)
+        setCurrentForm("create")
       }
     
     useEffect(() => {
@@ -126,7 +139,7 @@ const Admin = () => {
             <div>
                 <AdminBar/>
                 <div className="all-forms">
-                    {showForm && (
+                    {(currentFrom === "edit") && (
                         <form className="edit-form" onSubmit={handleEdit}>
                             <h1>Editing User ID <span>{selectedId}</span></h1>
 
@@ -142,13 +155,13 @@ const Admin = () => {
                             </div>
                             <div className="edit-buttons">
                                 <button className="edit-save" type="submit">Save</button>
-                                <button className="edit-close" onClick={() => setShowForm(false)}>X</button>
+                                <button className="edit-close" onClick={() => setCurrentForm("none")}>X</button>
                             </div>
                             
 
                         </form>
                     )}
-                    {showCreate && (
+                    {currentFrom === "create" && (
                         <form className="create-form" onSubmit={handleCreateUser}>
                             <h1>Creating a new User</h1>
                             <label>Name:</label>
@@ -173,14 +186,73 @@ const Admin = () => {
                             <br/>
                             <div className="create-buttons">
                                 <button className="create-create" type="submit">Create User</button>
-                                <button className='create-close' onClick={() => setShowCreate(false)}>X</button>
+                                <button className='create-close' onClick={() => setCurrentForm("none")}>X</button>
                             </div>      
                         </form>
                     )}
+                    {currentFrom == "view" && (
+                        <div className="box">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>{name}'s Information</th>
+                                        <th>
+                                            <a className="button" href="../admin">
+                                                <span>Close</span>
+                                                <span className="icon-text">
+                                                    <span className="icon">
+                                                        <i class="fa-solid fa-reply-all"></i>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colSpan='2'>
+                                            <p><strong>{name}</strong></p>
+                                            <br/>
+                                            <a href={email}>{email}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ID</strong></td>
+                                        <td>{selectedId}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>{name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Email</strong></td>
+                                        <td>{email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Role</strong></td>
+                                        <td>{role}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Created On</strong></td>
+                                        <td>{created}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Updated On</strong></td>
+                                        <td>{updated}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Last Login</strong></td>
+                                        <td>{lastLogin}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            
+                        </div>)}
                 </div>
                 
                     <Outlet/>
-                    {!showCreate && !showForm && (<button className='create-user-button' onClick={() => handleCreateClick()}>Create User</button>)}
+                    {currentFrom == "none" && (<button className='create-user-button' onClick={() => handleCreateClick()}>Create User</button>)}
                     <div className="table-container">
                         <table table className="table">
                             <thead>
@@ -204,7 +276,7 @@ const Admin = () => {
                                             <td>{props.last_login}</td>
                                             <td>
                                                 <button className='button' onClick={() => deleteUser(props.id)}>Delete</button>
-                                                <button className='button' onClick={() => showUser(props.id)}>Show</button>
+                                                <button className='button' onClick={() => handleViewClick(props)}>Show</button>
                                                 <button className='button' onClick={() => handleEditClick(props)}>Edit</button>
                                             </td>
                                         </tr>
