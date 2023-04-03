@@ -143,7 +143,7 @@ app.post('/api/mailing/create', (req, res) => {
 // Query to get all events from events table
 app.get("/api/events/get", (req,res)=>{
     console.log("events got")
-    db.query("SELECT * FROM events", (err,result)=>{
+    db.query("SELECT * FROM events ORDER BY Id DESC", (err,result)=>{
         if(err) {
             console.log(err)
             res.status(500).send("Error getting events")
