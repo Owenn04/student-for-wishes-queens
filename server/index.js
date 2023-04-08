@@ -435,7 +435,8 @@ app.put('/api/connect/put/:id', upload.single('image'), async (req, res, next) =
 
     const title = req.body.title
     const link = req.body.link
-    const image = req.body.image
+    const image = req.file.filename
+    console.log(image)
     
     db.query("SELECT image FROM connect WHERE id = ?", [id], (err, result) => {
         if(err) {
@@ -463,3 +464,7 @@ app.put('/api/connect/put/:id', upload.single('image'), async (req, res, next) =
         }
     })
 })
+
+
+
+

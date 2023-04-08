@@ -132,15 +132,10 @@ const AdminStaff= () => {
                         <textarea type="text" rows="5" value={bio} onChange={(e) => setBio(e.target.value)} />
                         
                         <label>Image:</label>
-                        <input
-                            type="file"
-                            id="file"
-                            accept=".jpg,.png,.jpeg,.JPG"
-                            onChange={e => {
+                        <input type="file" id="file" accept=".jpg,.png,.jpeg,.JPG" onChange={e => {
                                 const image = e.target.files[0]
                                 setImage(image)
-                            }}
-                        />
+                                }}/>
                         <div className="staff-buttons">
                             <button className="staff-save" type="submit">Save</button>
                             <button className="staff-close" onClick={() => setShowForm(false)}>X</button>

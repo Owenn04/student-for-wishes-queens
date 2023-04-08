@@ -24,7 +24,7 @@ const AdminConnect= () => {
 
     const [title, setTitle] = useState("")
     const [link, setLink] = useState("")
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState()
 
     useEffect(() => {
         console.log("data fetched for connect")
@@ -69,25 +69,28 @@ const AdminConnect= () => {
     const handleEdit = async (e) => {
         e.preventDefault()
         console.log("submit went through")
-
+      
         const formData = new FormData()
         formData.append("title", title)
         formData.append("link", link)
         formData.append("image", image)
-        //Must pass 'formData' as the body as Json does not work with files.
-
-        const response = await fetch(`http://localhost:3002/api/connect/put/${selectedId}`,{
+        
+        const response = await fetch(
+          `http://localhost:3002/api/connect/put/${selectedId}`,
+          {
             method: "PUT",
             body: formData,
-        })
-
+          }
+        )
+      
         if (response.status === 200) {
           alert("Row Updated")
           window.location.reload()
         } else {
           console.log("Error")
         }
-    }
+      }
+      
 
     const handleCreateTile = async (e) => {
         e.preventDefault()
